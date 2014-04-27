@@ -1,0 +1,21 @@
+{
+  "$type"       : "$add_item_to_cart",
+  "$api_key"    : "INSERT_API_KEY_HERE",
+  "$user_id"    : "billy_jones_301",
+
+  "$session_id" : "gigtleqddo84l8cm15qe4il3q3",
+  "$item"       : {
+    "$item_id"        : "B004834GQO",
+    "$product_title"  : "The Slanket Blanket-Texas Tea",
+    "$price"          : 399900000,
+    "$currency_code"  : "USD",
+    "$upc"            : "67862114510011",
+    "$sku"            : "004834GQ",
+    "$brand"          : "Slanket",
+    "$manufacturer"   : "Slanket",
+    "$category"       : "Blankets & Throws",
+    "$tags"           : ["Awesome", "Wintertime specials"],
+    "$color"          : "Texas Tea",
+    "$quantity"       : 16
+  }
+}

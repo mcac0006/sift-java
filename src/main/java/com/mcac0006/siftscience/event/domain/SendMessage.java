@@ -1,0 +1,108 @@
+/**
+ * 
+ */
+package com.mcac0006.siftscience.event.domain;
+
+import org.codehaus.jackson.annotate.JsonProperty;
+
+/**
+ * @author <a href="mailto:matthew.cachia@gmail.com">Matthew Cachia</a>
+ *
+ */
+public class SendMessage extends Event {
+	
+	/**
+	 * The user's account ID according to your systems. Use the same ID that you would use to look up users 
+	 * on your website's databases. This field is required on all events performed by the user while logged in. 
+	 * Users without an assigned {@link #userId} will not show up in the console. Note: User IDs are 
+	 * <strong>case sensitive</strong>. You may need to normalize the capitalization of your user IDs.
+	 */
+	@JsonProperty("$user_id")
+	private String userId;
+	
+	/**
+	 * The user's current session ID, used to tie a user's action before and after log in or account creation.
+	 */
+	@JsonProperty("$session_id")
+	private String sessionId;
+	
+	/**
+	 * The ID of the user receiving the message. Required to compute network graphs. 
+	 * 
+	 * Note: User IDs are case sensitive. You may need to normalize the capitalization of your user IDs.
+	 */
+	@JsonProperty("$recipient_user_id")
+	private String recipientUserId;
+	
+	/**
+	 * The subject of the message.
+	 */
+	@JsonProperty("$subject")
+	private String subject;
+	
+	/**
+	 * The content of the message.
+	 */
+	@JsonProperty("$content")
+	private String content;
+	
+	public SendMessage() {
+		super("$send_message");
+	}
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public String getSessionId() {
+		return sessionId;
+	}
+
+
+	public String getRecipientUserId() {
+		return recipientUserId;
+	}
+
+
+	public String getSubject() {
+		return subject;
+	}
+
+
+	public String getContent() {
+		return content;
+	}
+
+
+	public SendMessage setUserId(String userId) {
+		this.userId = userId;
+		return this;
+	}
+
+
+	public SendMessage setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+		return this;
+	}
+
+
+	public SendMessage setRecipientUserId(String recipientUserId) {
+		this.recipientUserId = recipientUserId;
+		return this;
+	}
+
+
+	public SendMessage setSubject(String subject) {
+		this.subject = subject;
+		return this;
+	}
+
+
+	public SendMessage setContent(String content) {
+		this.content = content;
+		return this;
+	}
+
+}

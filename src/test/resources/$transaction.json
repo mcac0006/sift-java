@@ -1,0 +1,41 @@
+{
+  "$api_key"          : "INSERT_API_KEY_HERE",
+  "$user_id"          : "billy_jones_301",
+
+  "$user_email"       : "bill@gmail.com",
+  "$transaction_type" : "$sale",
+  "$transaction_status" : "$success",
+  "$amount"           : 5067900000,
+  "$currency_code"    : "USD",
+  "$order_id"         : "ORDER-123124124",
+  "$transaction_id"   : "719637215",
+
+  "$billing_address"  : {
+      "$name"         : "Bill Jones",
+      "$phone"        : "1-415-555-6041",
+      "$address_1"    : "2100 Main Street",
+      "$address_2"    : "Apt 3B",
+      "$city"         : "New London",
+      "$region"       : "New Hampshire",
+      "$country"      : "US",
+      "$zipcode"      : "03257"
+  },
+  "$payment_method"   : {
+      "$payment_type"    : "$credit_card",
+      "$payment_gateway" : "$braintree",
+      "$card_bin"        : "542486",
+      "$card_last4"      : "4444"
+  },
+
+  "$shipping_address" : {
+      "$address_1"    : "2100 Main Street",
+      "$address_2"    : "Apt 3B",
+      "$city"         : "New London",
+      "$region"       : "New Hampshire",
+      "$country"      : "US",
+      "$zipcode"      : "03257"
+  },
+  "$session_id"       : "gigtleqddo84l8cm15qe4il3q3",
+
+  "$seller_user_id"     : "slinkys_emporium"
+}

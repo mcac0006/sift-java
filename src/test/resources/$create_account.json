@@ -1,0 +1,29 @@
+{
+  "$type"       : "$create_account",
+  "$api_key"    : "INSERT_API_KEY_HERE",
+  "$user_id"    : "billy_jones_301",
+
+  "$session_id"       : "gigtleqddo84l8cm15qe4il3q3",
+  "$user_email" : "bill@gmail.com",
+  "$name"             : "Bill Jones",
+  "$phone"            : "1-415-555-6040",
+  "$referrer_user_id" : "janejane101",
+  "$payment_methods"  : [
+      {
+          "$payment_type"    : "$credit_card",
+          "$card_bin"        : "542486",
+          "$card_last4"      : "4444"
+      }
+  ],
+  "$billing_address"  : {
+      "$name"         : "Bill Jones",
+      "$address_1"    : "2100 Main Street",
+      "$address_2"    : "Apt 3B",
+      "$city"         : "New London",
+      "$region"       : "New Hampshire",
+      "$country"      : "US",
+      "$zipcode"      : "03257"
+  },
+
+  "$social_sign_on_type"   : "$twitter"
+}

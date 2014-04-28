@@ -5,6 +5,8 @@ package com.mcac0006.siftscience.event.domain;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import com.mcac0006.siftscience.types.SubmissionStatus;
+
 
 /**
  * Use {@link SubmitReview} to record a user-submitted review of a product or 
@@ -14,30 +16,6 @@ import org.codehaus.jackson.annotate.JsonProperty;
  *
  */
 public class SubmitReview extends Event {
-	
-	/**
-	 * If reviews in your system must be approved, use {@link SubmissionStatus} to 
-	 * represent the status of the review.
-	 * 
-	 * @author <a href="mailto:matthew.cachia@gmail.com">Matthew Cachia</a>
-	 *
-	 */
-	public enum SubmissionStatus {
-
-		SUCCESS("$success"),
-		FAILURE("$failure"),
-		PENDING("$pending");
-		
-		private String value;
-		
-		private SubmissionStatus(final String value) {
-			this.value = value;
-		}
-
-		public String getValue() {
-			return value;
-		}
-	}
 		
 	/**
 	 * The user's account ID according to your systems. Use the same ID that you would use to look up users 
@@ -152,4 +130,75 @@ public class SubmitReview extends Event {
 		return this;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (!super.equals(obj)) {
+			return false;
+		}
+
+		if (obj == null || !(obj instanceof SubmitReview)) {
+			return false;
+		}
+		
+		final SubmitReview sr = (SubmitReview)obj;
+		
+		if (this.sessionId == null) {
+			if (sr.getSessionId() != null) {
+				return false;
+			}
+		} else if (!this.sessionId.equals(sr.getSessionId())) {
+			return false;
+		}
+		
+		if (this.userId == null) {
+			if (sr.getUserId() != null) {
+				return false;
+			}
+		} else if (!this.userId.equals(sr.getUserId())) {
+			return false;
+		}
+		
+		if (this.content == null) {
+			if (sr.getContent() != null) {
+				return false;
+			}
+		} else if (!this.content.equals(sr.getContent())) {
+			return false;
+		}
+		
+		if (this.itemId == null) {
+			if (sr.getItemId() != null) {
+				return false;
+			}
+		} else if (!this.itemId.equals(sr.getItemId())) {
+			return false;
+		}
+		
+		if (this.reviewedUserId == null) {
+			if (sr.getReviewedUserId() != null) {
+				return false;
+			}
+		} else if (!this.reviewedUserId.equals(sr.getReviewedUserId())) {
+			return false;
+		}
+		
+		if (this.reviewTitle == null) {
+			if (sr.getReviewTitle() != null) {
+				return false;
+			}
+		} else if (!this.reviewTitle.equals(sr.getReviewTitle())) {
+			return false;
+		}
+		
+		if (this.submissionStatus == null) {
+			if (sr.getSubmissionStatus() != null) {
+				return false;
+			}
+		} else if (!this.submissionStatus.equals(sr.getSubmissionStatus())) {
+			return false;
+		}
+		
+		return true;
+	}
 }

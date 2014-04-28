@@ -4,7 +4,6 @@
 package com.mcac0006.siftscience.types;
 
 import java.util.Arrays;
-import java.util.Currency;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 

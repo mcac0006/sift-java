@@ -36,5 +36,29 @@ public class Logout extends Event {
 		this.userId = userId;
 		return this;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (!super.equals(obj)) {
+			return false;
+		}
+
+		if (obj == null || !(obj instanceof Logout)) {
+			return false;
+		}
+		
+		final Logout l = (Logout)obj;
+		
+		if (this.userId == null) {
+			if (l.getUserId() != null) {
+				return false;
+			}
+		} else if (!this.userId.equals(l.getUserId())) {
+			return false;
+		}
+		
+		return true;
+	}
 
 }

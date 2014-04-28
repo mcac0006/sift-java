@@ -105,4 +105,60 @@ public class SendMessage extends Event {
 		return this;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (!super.equals(obj)) {
+			return false;
+		}
+
+		if (obj == null || !(obj instanceof SendMessage)) {
+			return false;
+		}
+		
+		final SendMessage rm = (SendMessage)obj;
+		
+		if (this.sessionId == null) {
+			if (rm.getSessionId() != null) {
+				return false;
+			}
+		} else if (!this.sessionId.equals(rm.getSessionId())) {
+			return false;
+		}
+		
+		if (this.userId == null) {
+			if (rm.getUserId() != null) {
+				return false;
+			}
+		} else if (!this.userId.equals(rm.getUserId())) {
+			return false;
+		}
+		
+		if (this.content == null) {
+			if (rm.getContent() != null) {
+				return false;
+			}
+		} else if (!this.content.equals(rm.getContent())) {
+			return false;
+		}
+		
+		if (this.recipientUserId == null) {
+			if (rm.getRecipientUserId() != null) {
+				return false;
+			}
+		} else if (!this.recipientUserId.equals(rm.getRecipientUserId())) {
+			return false;
+		}
+		
+		if (this.subject == null) {
+			if (rm.getSubject() != null) {
+				return false;
+			}
+		} else if (!this.subject.equals(rm.getSubject())) {
+			return false;
+		}
+		
+		return true;
+	}
+
 }

@@ -1,6 +1,9 @@
 package com.mcac0006.siftscience.types;
 
 import org.codehaus.jackson.annotate.JsonValue;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
+
+import com.mcac0006.siftscience.types.deserializer.ReasonDeserializer;
 
 /**
  * The fraud reason help us specify why we consider this account to be fraudulent.
@@ -8,6 +11,7 @@ import org.codehaus.jackson.annotate.JsonValue;
  * @author <a href="mailto:matthew.cachia@ixaris.com">Matthew Cachia</a>
  *
  */
+@JsonDeserialize(using=ReasonDeserializer.class)
 public enum Reason {
 	
 	/**
@@ -35,14 +39,24 @@ public enum Reason {
 	 */
 	DUPLICATE_ACCOUNT("$duplicate_account");
 	
-	private String value;
-	
-	Reason(final String value) {
-		this.value=value;
+	private String siftScienceValue;
+
+	private Reason(String siftScienceValue) {
+		this.siftScienceValue = siftScienceValue;
 	}
 	
 	@JsonValue
-	public String getValue() {
-		return value;
+	public String getSiftScienceValue() {
+		return siftScienceValue;
+	}
+	
+	public static Reason resolve(final String siftScienceValue) {
+		
+		for (Reason ele : Reason.values()) {
+			if (ele.getSiftScienceValue().equals(siftScienceValue))
+				return ele;
+		}
+		
+		throw new IllegalArgumentException(String.format("Reason [%s] is not supported by this enum.", siftScienceValue));
 	}
 };

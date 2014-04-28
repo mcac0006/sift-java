@@ -3,6 +3,8 @@
  */
 package com.mcac0006.siftscience.event.domain;
 
+import java.util.Arrays;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import com.mcac0006.siftscience.types.Address;
@@ -180,5 +182,94 @@ public class CreateAccount extends Event {
 	public CreateAccount setSocialSignOnType(SocialSignOnType socialSignOnType) {
 		this.socialSignOnType = socialSignOnType;
 		return this;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (!super.equals(obj)) {
+			return false;
+		}
+
+		if (obj == null || !(obj instanceof CreateAccount)) {
+			return false;
+		}
+		
+		final CreateAccount ca = (CreateAccount)obj;
+		
+		if (this.billingAddress == null) {
+			if (ca.getBillingAddress() != null) {
+				return false;
+			}
+		} else if (!this.billingAddress.equals(ca.getBillingAddress())) {
+			return false;
+		}
+		
+		if (this.name == null) {
+			if (ca.getName() != null) {
+				return false;
+			}
+		} else if (!this.name.equals(ca.getName())) {
+			return false;
+		}
+		
+		if (this.paymentMethods == null) {
+			if (ca.getPaymentMethods() != null) {
+				return false;
+			}
+		} else if (!Arrays.equals(this.paymentMethods, ca.getPaymentMethods())) {
+			return false;
+		}
+		
+		if (this.phone == null) {
+			if (ca.getPhone() != null) {
+				return false;
+			}
+		} else if (!this.phone.equals(ca.getPhone())) {
+			return false;
+		}
+		
+		if (this.referrerUserId == null) {
+			if (ca.getReferrerUserId() != null) {
+				return false;
+			}
+		} else if (!this.referrerUserId.equals(ca.getReferrerUserId())) {
+			return false;
+		}
+		
+		if (this.sessionId == null) {
+			if (ca.getSessionId() != null) {
+				return false;
+			}
+		} else if (!this.sessionId.equals(ca.getSessionId())) {
+			return false;
+		}
+		
+		if (this.socialSignOnType == null) {
+			if (ca.getSocialSignOnType() != null) {
+				return false;
+			}
+		} else if (!this.socialSignOnType.equals(ca.getSocialSignOnType())) {
+			return false;
+		}
+		
+		if (this.userEmail == null) {
+			if (ca.getUserEmail() != null) {
+				return false;
+			}
+		} else if (!this.userEmail.equals(ca.getUserEmail())) {
+			return false;
+		}
+		
+		if (this.userId == null) {
+			if (ca.getUserId() != null) {
+				return false;
+			}
+		} else if (!this.userId.equals(ca.getUserId())) {
+			return false;
+		}
+		
+		return true;
+		
 	}
 }

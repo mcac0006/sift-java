@@ -1,0 +1,81 @@
+{
+  "$type"             : "$create_order",
+  "$api_key"          : "INSERT_API_KEY_HERE",
+  "$user_id"          : "billy_jones_301",
+
+  "$session_id"       : "gigtleqddo84l8cm15qe4il3q3",
+  "$order_id"         : "ORDER-28168441",
+  "$user_email"       : "bill@gmail.com",
+  "$amount"           : 5067900000,
+  "$currency_code"    : "USD",
+  "$billing_address"  : {
+      "$name"         : "Bill Jones",
+      "$phone"        : "1-415-555-6041",
+      "$address_1"    : "2100 Main Street",
+      "$address_2"    : "Apt 3B",
+      "$city"         : "New London",
+      "$region"       : "New Hampshire",
+      "$country"      : "US",
+      "$zipcode"      : "03257"
+  },
+  "$payment_methods"  : [
+      {
+          "$payment_type"    : "$credit_card",
+          "$payment_gateway" : "$braintree",
+          "$card_bin"        : "542486",
+          "$card_last4"      : "4444"
+      }
+  ],
+  "$shipping_address"  : {
+      "$address_1"     : "2100 Main Street",
+      "$address_2"     : "Apt 3B",
+      "$city"          : "New London",
+      "$region"        : "New Hampshire",
+      "$country"       : "US",
+      "$zipcode"       : "03257"
+  },
+  "$expedited_shipping" : true,
+  "$items"             : [
+    {
+      "$item_id"        : "12344321",
+      "$product_title"  : "Microwavable Kettle Corn: Original Flavor",
+      "$price"          : 49900000,
+      "$upc"            : "097564307560",
+      "$sku"            : "03586005",
+      "$brand"          : "Peters Kettle Corn",
+      "$manufacturer"   : "Peters Kettle Corn",
+      "$category"       : "Food and Grocery",
+      "$tags"           : ["Popcorn", "Snacks", "On Sale"],
+      "$quantity"       : 4
+    },
+
+    {
+      "$item_id"        : "B004834GQO",
+      "$product_title"  : "The Slanket Blanket-Texas Tea",
+      "$price"          : 399900000,
+      "$upc"            : "67862114510011",
+      "$sku"            : "004834GQ",
+      "$brand"          : "Slanket",
+      "$manufacturer"   : "Slanket",
+      "$category"       : "Blankets & Throws",
+      "$tags"           : ["Awesome", "Wintertime specials"],
+      "$color"          : "Texas Tea",
+      "$quantity"       : 16
+    },
+
+    {
+      "$item_id"        : "10101042",
+      "$product_title"  : "Delivering Happiness [eBook edition]",
+      "$price"          : 69900000,
+      "$isbn"           : "0446576220",
+      "$sku"            : "10101042",
+      "$brand"          : "Writers of the Round Table Press",
+      "$manufacturer"   : "eBook Digital Services, Inc.",
+      "$category"       : "Business books",
+      "$tags"           : ["reprint", "paperback", "Tony Hsieh"],
+      "$quantity"       : 1
+    }
+  ],
+
+  "$seller_user_id"     : "slinkys_emporium"
+}

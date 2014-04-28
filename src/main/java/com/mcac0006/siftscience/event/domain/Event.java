@@ -38,4 +38,32 @@ public abstract class Event {
 	public final String getEventType() {
 		return eventType;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+
+		if (obj == null || !(obj instanceof Event)) {
+			return false;
+		}
+		
+		final Event e = (Event)obj;
+		
+		if (this.apiKey == null) {
+			if (e.getApiKey() != null) {
+				return false;
+			}
+		} else if (!this.apiKey.equals(e.getApiKey())) {
+			return false;
+		}
+		
+		if (this.eventType == null) {
+			if (e.getEventType() != null) {
+				return false;
+			}
+		} else if (!this.eventType.equals(e.getEventType())) {
+			return false;
+		}
+		
+		return true;
+	}
 }

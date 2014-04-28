@@ -3,8 +3,11 @@
  */
 package com.mcac0006.siftscience.label.domain;
 
+import java.util.Arrays;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import com.mcac0006.siftscience.event.domain.Transaction;
 import com.mcac0006.siftscience.types.Reason;
 
 /**
@@ -79,5 +82,49 @@ public class Label {
 	public Label setDescription(String description) {
 		this.description = description;
 		return this;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+
+		if (obj == null || !(obj instanceof Label)) {
+			return false;
+		}
+		
+		final Label l = (Label)obj;
+		
+		if (this.isBad == null) {
+			if (l.getIsBad() != null) {
+				return false;
+			}
+		} else if (!this.isBad.equals(l.getIsBad())) {
+			return false;
+		}
+		
+		if (this.apiKey == null) {
+			if (l.getApiKey() != null) {
+				return false;
+			}
+		} else if (!this.apiKey.equals(l.getApiKey())) {
+			return false;
+		}
+		
+		if (this.description == null) {
+			if (l.getDescription() != null) {
+				return false;
+			}
+		} else if (!this.description.equals(l.getDescription())) {
+			return false;
+		}
+		
+		if (this.reasons == null) {
+			if (l.getReasons() != null) {
+				return false;
+			}
+		} else if (!Arrays.equals(this.reasons, l.getReasons())) {
+			return false;
+		}
+		
+		return true;
 	}
 }

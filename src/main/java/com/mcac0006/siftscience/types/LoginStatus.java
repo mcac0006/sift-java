@@ -1,5 +1,10 @@
 package com.mcac0006.siftscience.types;
 
+import org.codehaus.jackson.annotate.JsonValue;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
+
+import com.mcac0006.siftscience.types.deserializer.LoginStatusDeserializer;
+
 
 /**
  * Use {@link LoginStatus} to represent the success or failure of the log in attempt. 
@@ -9,18 +14,30 @@ package com.mcac0006.siftscience.types;
  * @author <a href="mailto:matthew.cachia@ixaris.com">Matthew Cachia</a>
  *
  */
+@JsonDeserialize(using=LoginStatusDeserializer.class)
 public enum LoginStatus {
 	
 	SUCCESS ("$success"),
 	FAILURE("$failure");
 	
-	private String value;
-	
-	LoginStatus(final String value) {
-		this.value=value;
+	private String siftScienceValue;
+
+	private LoginStatus(String siftScienceValue) {
+		this.siftScienceValue = siftScienceValue;
 	}
 	
-	public String getValue() {
-		return value;
+	@JsonValue
+	public String getSiftScienceValue() {
+		return siftScienceValue;
+	}
+	
+	public static LoginStatus resolve(final String siftScienceValue) {
+		
+		for (LoginStatus ele : LoginStatus.values()) {
+			if (ele.getSiftScienceValue().equals(siftScienceValue))
+				return ele;
+		}
+		
+		throw new IllegalArgumentException(String.format("Login Status [%s] is not supported by this enum.", siftScienceValue));
 	}
 };

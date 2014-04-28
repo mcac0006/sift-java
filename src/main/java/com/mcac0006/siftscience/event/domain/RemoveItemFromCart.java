@@ -74,4 +74,43 @@ public class RemoveItemFromCart extends Event {
 		return this;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (!super.equals(obj)) {
+			return false;
+		}
+
+		if (obj == null || !(obj instanceof RemoveItemFromCart)) {
+			return false;
+		}
+		
+		final RemoveItemFromCart rifc = (RemoveItemFromCart)obj;
+		
+		if (this.item == null) {
+			if (rifc.getItem() != null) {
+				return false;
+			}
+		} else if (!this.item.equals(rifc.getItem())) {
+			return false;
+		}
+		
+		if (this.sessionId == null) {
+			if (rifc.getSessionId() != null) {
+				return false;
+			}
+		} else if (!this.sessionId.equals(rifc.getSessionId())) {
+			return false;
+		}
+		
+		if (this.userId == null) {
+			if (rifc.getUserId() != null) {
+				return false;
+			}
+		} else if (!this.userId.equals(rifc.getUserId())) {
+			return false;
+		}
+		
+		return true;
+	}
 }

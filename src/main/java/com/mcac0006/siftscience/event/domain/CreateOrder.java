@@ -3,6 +3,8 @@
  */
 package com.mcac0006.siftscience.event.domain;
 
+import java.util.Arrays;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import com.mcac0006.siftscience.types.Address;
@@ -48,7 +50,7 @@ public class CreateOrder extends Event {
 	 * micros. $1.23 USD = 123 cents = 1,230,000 micros.
 	 */
 	@JsonProperty("$amount")
-	private Integer amount;
+	private Long amount;
 	
 	/**
 	 * <a href="http://en.wikipedia.org/wiki/ISO_4217">ISO-4217</a> currency code for the amount. If your site 
@@ -86,15 +88,15 @@ public class CreateOrder extends Event {
 	/**
 	 * The list of {@link Item}s ordered.
 	 */
-	@JsonProperty("$session_id")
-	private Item[] $items;
+	@JsonProperty("$items")
+	private Item[] items;
 	
 	/**
 	 * For marketplace businesses, this is the seller's user ID, typically a database primary key. Note: User IDs are case sensitive. 
 	 * You may need to normalize the capitalization of your user IDs.
 	 */
-	@JsonProperty("$session_id")
-	private String $seller_user_id;
+	@JsonProperty("$seller_user_id")
+	private String sellerUserId;
 	
 	
 	public CreateOrder() {
@@ -122,7 +124,7 @@ public class CreateOrder extends Event {
 	}
 
 
-	public Integer getAmount() {
+	public Long getAmount() {
 		return amount;
 	}
 
@@ -176,7 +178,7 @@ public class CreateOrder extends Event {
 	}
 
 
-	public CreateOrder setAmount(Integer amount) {
+	public CreateOrder setAmount(Long amount) {
 		this.amount = amount;
 		return this;
 	}
@@ -212,24 +214,136 @@ public class CreateOrder extends Event {
 	}
 
 
-	public CreateOrder set$items(Item[] $items) {
-		this.$items = $items;
+	public CreateOrder setItems(Item[] items) {
+		this.items = items;
 		return this;
 	}
 
 
-	public CreateOrder set$seller_user_id(String $seller_user_id) {
-		this.$seller_user_id = $seller_user_id;
+	public CreateOrder setSellerUserId(String sellerUserId) {
+		this.sellerUserId = sellerUserId;
 		return this;
 	}
 
 
-	public Item[] get$items() {
-		return $items;
+	public Item[] getItems() {
+		return items;
 	}
 
 
-	public String get$seller_user_id() {
-		return $seller_user_id;
+	public String getSellerUserId() {
+		return sellerUserId;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (!super.equals(obj)) {
+			return false;
+		}
+
+		if (obj == null || !(obj instanceof CreateOrder)) {
+			return false;
+		}
+		
+		final CreateOrder co = (CreateOrder)obj;
+		
+		if (this.expeditedShipping == null) {
+			if (co.getExpeditedShipping() != null) {
+				return false;
+			}
+		} else if (!this.expeditedShipping.equals(co.getExpeditedShipping())) {
+			return false;
+		}
+		
+		if (this.amount == null) {
+			if (co.getAmount() != null) {
+				return false;
+			}
+		} else if (!this.amount.equals(co.getAmount())) {
+			return false;
+		}
+		
+		if (this.billingAddress == null) {
+			if (co.getBillingAddress() != null) {
+				return false;
+			}
+		} else if (!this.billingAddress.equals(co.getBillingAddress())) {
+			return false;
+		}
+		
+		if (this.currencyCode == null) {
+			if (co.getCurrencyCode() != null) {
+				return false;
+			}
+		} else if (!this.currencyCode.equals(co.getCurrencyCode())) {
+			return false;
+		}
+		
+		if (this.items == null) {
+			if (co.getItems() != null) {
+				return false;
+			}
+		} else if (!Arrays.equals(this.items, co.getItems())) {
+			return false;
+		}
+		
+		if (this.orderId == null) {
+			if (co.getOrderId() != null) {
+				return false;
+			}
+		} else if (!this.orderId.equals(co.getOrderId())) {
+			return false;
+		}
+		
+		if (this.paymentMethods == null) {
+			if (co.getPaymentMethods() != null) {
+				return false;
+			}
+		} else if (!Arrays.equals(this.paymentMethods, co.getPaymentMethods())) {
+			return false;
+		}
+		
+		if (this.sellerUserId == null) {
+			if (co.getSellerUserId() != null) {
+				return false;
+			}
+		} else if (!this.sellerUserId.equals(co.getSellerUserId())) {
+			return false;
+		}
+		
+		if (this.sessionId == null) {
+			if (co.getSessionId() != null) {
+				return false;
+			}
+		} else if (!this.sessionId.equals(co.getSessionId())) {
+			return false;
+		}
+		
+		if (this.shippingAddress == null) {
+			if (co.getShippingAddress() != null) {
+				return false;
+			}
+		} else if (!this.shippingAddress.equals(co.getShippingAddress())) {
+			return false;
+		}
+		
+		if (this.userEmail == null) {
+			if (co.getUserEmail() != null) {
+				return false;
+			}
+		} else if (!this.userEmail.equals(co.getUserEmail())) {
+			return false;
+		}
+		
+		if (this.userId == null) {
+			if (co.getUserId() != null) {
+				return false;
+			}
+		} else if (!this.userId.equals(co.getUserId())) {
+			return false;
+		}
+		
+		return true;
 	}
 }

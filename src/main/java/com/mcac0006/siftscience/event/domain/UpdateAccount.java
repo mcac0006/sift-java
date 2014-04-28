@@ -3,6 +3,8 @@
  */
 package com.mcac0006.siftscience.event.domain;
 
+import java.util.Arrays;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import com.mcac0006.siftscience.types.Address;
@@ -52,6 +54,14 @@ public class UpdateAccount extends Event {
 	 */
 	@JsonProperty("$phone")
 	private String phone;
+	
+	/**
+	 * The ID of the user that referred the current user to your business. This field is required for detecting 
+	 * referral fraud. Note: User IDs are case sensitive. You may need to normalize the capitalization of your 
+	 * user IDs.
+	 */
+	@JsonProperty("$referrer_user_id")
+	private String referrerUserId;
 	
 	/**
 	 * The payment information associated with this order. Represented as an array of nested {@link PaymentMethod} 
@@ -108,6 +118,12 @@ public class UpdateAccount extends Event {
 	}
 
 
+	
+	public String getReferrerUserId() {
+		return referrerUserId;
+	}
+
+
 
 	public PaymentMethod[] getPaymentMethods() {
 		return paymentMethods;
@@ -160,6 +176,13 @@ public class UpdateAccount extends Event {
 		return this;
 	}
 
+	
+
+	public UpdateAccount setReferrerUserId(String referrerUserId) {
+		this.referrerUserId = referrerUserId;
+		return this;
+	}
+
 
 
 	public UpdateAccount setPaymentMethods(PaymentMethod[] paymentMethods) {
@@ -181,4 +204,100 @@ public class UpdateAccount extends Event {
 		return this;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (!super.equals(obj)) {
+			return false;
+		}
+
+		if (obj == null || !(obj instanceof UpdateAccount)) {
+			return false;
+		}
+		
+		final UpdateAccount ua = (UpdateAccount)obj;
+		
+		if (this.billingAddress == null) {
+			if (ua.getBillingAddress() != null) {
+				return false;
+			}
+		} else if (!this.billingAddress.equals(ua.getBillingAddress())) {
+			return false;
+		}
+		
+		if (this.name == null) {
+			if (ua.getName() != null) {
+				return false;
+			}
+		} else if (!this.name.equals(ua.getName())) {
+			return false;
+		}
+		
+		if (this.paymentMethods == null) {
+			if (ua.getPaymentMethods() != null) {
+				return false;
+			}
+		} else if (!Arrays.equals(this.paymentMethods, ua.getPaymentMethods())) {
+			return false;
+		}
+		
+		if (this.phone == null) {
+			if (ua.getPhone() != null) {
+				return false;
+			}
+		} else if (!this.phone.equals(ua.getPhone())) {
+			return false;
+		}
+		
+		if (this.referrerUserId == null) {
+			if (ua.getReferrerUserId() != null) {
+				return false;
+			}
+		} else if (!this.referrerUserId.equals(ua.getReferrerUserId())) {
+			return false;
+		}
+		
+		if (this.socialSignOnType == null) {
+			if (ua.getSocialSignOnType() != null) {
+				return false;
+			}
+		} else if (!this.socialSignOnType.equals(ua.getSocialSignOnType())) {
+			return false;
+		}
+		
+		if (this.userEmail == null) {
+			if (ua.getUserEmail() != null) {
+				return false;
+			}
+		} else if (!this.userEmail.equals(ua.getUserEmail())) {
+			return false;
+		}
+		
+		if (this.userId == null) {
+			if (ua.getUserId() != null) {
+				return false;
+			}
+		} else if (!this.userId.equals(ua.getUserId())) {
+			return false;
+		}
+		
+		if (this.changedPassword == null) {
+			if (ua.getChangedPassword() != null) {
+				return false;
+			}
+		} else if (!this.changedPassword.equals(ua.getChangedPassword())) {
+			return false;
+		}
+		
+		if (this.socialSignOnType == null) {
+			if (ua.getSocialSignOnType() != null) {
+				return false;
+			}
+		} else if (!this.socialSignOnType.equals(ua.getSocialSignOnType())) {
+			return false;
+		}
+		
+		return true;
+		
+	}
 }

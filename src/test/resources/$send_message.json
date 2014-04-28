@@ -1,0 +1,9 @@
+{
+  "$type"       : "$send_message",
+  "$api_key"    : "INSERT_API_KEY_HERE",
+  "$user_id"    : "billy_jones_301",
+
+  "$recipient_user_id" : "512924123",
+  "$subject"    : "Subject line of the message.",
+  "$content"    : "Text content of message."
+}

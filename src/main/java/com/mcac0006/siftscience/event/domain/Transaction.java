@@ -235,6 +235,10 @@ public class Transaction extends Event {
 	
 	@Override
 	public boolean equals(Object obj) {
+		
+		if (!super.equals(obj)) {
+			return false;
+		}
 
 		if (obj == null || !(obj instanceof Transaction)) {
 			return false;

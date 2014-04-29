@@ -3,7 +3,7 @@ sift-java
 
 Java library which help integrate your Java application to Sift Science (http://www.siftscience.com) quicker and easier.
 
-This library has been made using Apache HttpClient (http://hc.apache.org) and Jackson JSON Processor (http://jackson.codehaus.org).
+This library has been made using Jersey (https://jersey.java.net) for the transport layer and Jackson JSON Processor (http://jackson.codehaus.org) as (de)serializer.
 
 1. Installation (using Maven)
 -----------------------------

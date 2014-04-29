@@ -40,7 +40,7 @@ public class SiftScienceBodyTests {
 	private ObjectMapper mapper;
 	
 	@Before
-	public void setup() {		
+	public void setup() {
 		mapper = new ObjectMapper();
 		mapper.setSerializationInclusion(Inclusion.NON_NULL);
 	}

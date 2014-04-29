@@ -3,12 +3,18 @@
  */
 package com.mcac0006.siftscience;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
+import java.io.IOException;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation.Builder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
@@ -17,6 +23,11 @@ import com.mcac0006.siftscience.label.domain.Label;
 import com.mcac0006.siftscience.result.SiftScienceResult;
 
 /**
+ * This helper will take care of marshalling the content you wish to send to Sift Science and 
+ * also POST send it to Sift Science.
+ * 
+ * <strong>This class is synchronous.</strong>
+ * 
  * @author <a href="mailto:matthew.cachia@gmail.com">Matthew Cachia</a>
  *
  */
@@ -26,10 +37,10 @@ public class SiftScienceHelper {
 	
 	private String apiKey;
 	
-	public SiftScienceHelper(final String apiKey) throws Exception {
+	public SiftScienceHelper(final String apiKey) {
 		
 		if (apiKey == null || apiKey.isEmpty()) {
-			throw new Exception("The API Key apiKey must not be null or empty.");
+			throw new RuntimeException("The API Key apiKey must not be null or empty.");
 		}
 		
 		this.apiKey = apiKey;
@@ -37,57 +48,62 @@ public class SiftScienceHelper {
 		mapper.setSerializationInclusion(Inclusion.NON_NULL);
 	}
 	
+	/**
+	 * Sends an event ($transaction, $create_account, etc ...) to Sift Sciecne.
+	 * 
+	 * @param event - the content regarding the user (or session) in question.
+	 * @return the Sift Science response which denotes whether the request has been processed successfully or not.
+	 */
 	public SiftScienceResult send(final Event event) {
+		
+		event.setApiKey(apiKey);
 		
 		try {
 			
-	    	final String url = "https://api.siftscience.com/v203/events";
-	   	 
-	    	final HttpClient client = HttpClientBuilder.create().build();
-	    	final HttpPost post = new HttpPost(url);
-	    	post.setHeader("User-Agent", "Mozilla/5.0");
-	     
-	    	event.setApiKey(apiKey);
-	        final HttpEntity entity = new ByteArrayEntity(mapper.writeValueAsString(event).getBytes("UTF-8"));
-	        post.setEntity(entity);
-	        
-	    	final HttpResponse response = client.execute(post);
-	    	if (response.getStatusLine().getStatusCode() != 200) {
-	    		throw new RuntimeException(String.format("Error trying to send request to SiftScience. Http Code [%s].", response.getStatusLine().getStatusCode()));
-	    	}
-	    	final SiftScienceResult siftResult = mapper.readValue(response.getEntity().getContent(), SiftScienceResult.class);
-	    	
-	    	return siftResult;
-	    	
-		} catch (Exception ex) {
-			throw new RuntimeException("An unexpected error was thrown.", ex);
+			final Client client = ClientBuilder.newClient();
+			final WebTarget target = client.target("https://api.siftscience.com/v203/events");
+			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
+			final Response post = request.post(Entity.entity(mapper.writeValueAsString(event), MediaType.APPLICATION_JSON_TYPE));
+			
+			final SiftScienceResult siftResult = mapper.readValue(post.readEntity(String.class), SiftScienceResult.class);
+			return siftResult;
+			
+		} catch (JsonGenerationException e) {
+			throw new RuntimeException("Error generating JSON content to send.", e);
+		} catch (JsonMappingException e) {
+			throw new RuntimeException("Error generating JSON content to send.", e);
+		} catch (IOException e) {
+			throw new RuntimeException("Error generating JSON content to send.", e);
 		}
 	}
 	
+	/**
+	 * Sends a Label ($label) to Sift Science.
+	 * 
+	 * @param userId - the user in question
+	 * @param label - the content regarding the user in question.
+	 * @return the Sift Science response which denotes whether the request has been processed successfully or not.
+	 */
 	public SiftScienceResult send(final String userId, final Label label) {
+		
+		label.setApiKey(apiKey);
 		
 		try {
 			
-			final String url = String.format("https://api.siftscience.com/v203/users/%s/labels", userId);
-	   	 
-	    	final HttpClient client = HttpClientBuilder.create().build();
-	    	final HttpPost post = new HttpPost(url);
-	    	post.setHeader("User-Agent", "Mozilla/5.0");
-	    	
-	    	label.setApiKey(this.apiKey);
-	        final HttpEntity entity = new ByteArrayEntity(mapper.writeValueAsString(label).getBytes("UTF-8"));
-	        post.setEntity(entity);
-	     
-	    	final HttpResponse response = client.execute(post);
-	    	if (response.getStatusLine().getStatusCode() != 200) {
-	    		throw new RuntimeException(String.format("Error trying to send request to SiftScience. Http Code [%s].", response.getStatusLine().getStatusCode()));
-	    	}
-	    	final SiftScienceResult siftResult = mapper.readValue(response.getEntity().getContent(), SiftScienceResult.class);
-	    	
-	    	return siftResult;
-	    	
-		} catch (Exception ex) {
-			throw new RuntimeException("An unexpected error was thrown.", ex);
+			final Client client = ClientBuilder.newClient();
+			final WebTarget target = client.target("https://api.siftscience.com/v203/users/").path(userId).path("labels");
+			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
+			final Response post = request.post(Entity.entity(mapper.writeValueAsString(label), MediaType.APPLICATION_JSON_TYPE));
+			
+			final SiftScienceResult siftResult = mapper.readValue(post.readEntity(String.class), SiftScienceResult.class);
+			return siftResult;
+			
+		} catch (JsonGenerationException e) {
+			throw new RuntimeException("Error generating JSON content to send.", e);
+		} catch (JsonMappingException e) {
+			throw new RuntimeException("Error generating JSON content to send.", e);
+		} catch (IOException e) {
+			throw new RuntimeException("Error generating JSON content to send.", e);
 		}
 	}
 }

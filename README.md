@@ -47,7 +47,8 @@ Naming a few things which are left to be implemented:
 - support for custom events
 - support for custom fields
 
-*Would you like to contribute?*
+**Would you like to contribute?**
+Feel free to fork and add more support to the APIs. Don't forget to provide JUnit tests (check out the existing ones to get an idea).
 
  
 4. License

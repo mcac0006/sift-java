@@ -26,16 +26,24 @@ final SiftScience helper = new SiftScience('API_KEY_GOES_HERE'); // instantiate 
 ```
 
 ```
-// Sending a Transaction is easy!
+// Sending a an Event is easy! Let's create a Transaction ($transaction) event.
 final Event event = new Transaction(); // create an event
 event.setX(...).setY(...).setZ(...); //fill in all fields using setters
+
+// ... you can also add custom fields of your own to any event!
+event.addCustomField('key1', 'value1');
+event.addCustomField('key2', 'value2');
+...
+
 final SiftScienceResult ssr = helper.send(event); //send the event to SiftScience
+
 ```
 
 ```
 // Labels are also created in the same fashion
 final Label label = new Label(); // create an event
 label.setX(...).setY(...).setZ(...); //fill in all fields using setters
+
 final SiftScienceResult ssr = helper.send(event); //send the event to SiftScience
 ```
 
@@ -47,7 +55,8 @@ Naming a few things which are left to be implemented:
 - support for custom events
 - support for custom fields
 
-*Would you like to contribute?*
+**Would you like to contribute?**
+Feel free to fork and add more support to the APIs. Don't forget to provide JUnit tests (check out the existing ones to get an idea).
 
  
 4. License

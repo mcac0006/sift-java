@@ -86,6 +86,50 @@ public class SiftScienceBodyTests {
 	}
 	
 	/**
+	 * 1. Instantiate an {@link Transaction} instance with the same values found in 
+	 * 	  $transaction_with_custom_fields.json.
+	 * 
+	 * 2. Generate an {@link Transaction} instance from $transaction_with_custom_fields.json.
+	 * ---
+	 * Both instances must be equal.
+	 * 
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
+	@Test
+	public void eventTestWithCustomFields() throws JsonGenerationException, JsonMappingException, IOException {
+		
+		// 1. Instantiate an {@link Transaction} instance with the same values found in $transactions.json.
+		final Address billingAddress = new Address();
+		billingAddress.setName("Bill Jones").setPhone("1-415-555-6041").setAddressLine1("2100 Main Street").setAddressLine2("Apt 3B").setCity("New London").setRegion("New Hampshire").setCountry("US").setZipCode("03257");
+		
+		final PaymentMethod paymentMethod = new PaymentMethod();
+		paymentMethod.setPaymentType(PaymentType.CREDIT_CARD).setPaymentGateway(PaymentGateway.BRAINTREE).setCardBIN("542486").setCardLast4("4444");
+		
+		final Address shippingAddress = new Address();
+		shippingAddress.setAddressLine1("2100 Main Street").setAddressLine2("Apt 3B").setCity("New London").setRegion("New Hampshire").setCountry("US").setZipCode("03257");
+		
+		final Transaction transaction = new Transaction();
+		transaction.setApiKey("INSERT_API_KEY_HERE");
+		transaction.setUserId("billy_jones_301").setUserEmail("bill@gmail.com").setTransactionType(TransactionType.SALE).setTransactionStatus(TransactionStatus.SUCCESS).setAmount(5067900000l).setCurrencyCode("USD").setOrderId("ORDER-123124124").setTransactionId("719637215").setBillingAddress(billingAddress).setPaymentMethod(paymentMethod).setShippingAddress(shippingAddress).setSessionId("gigtleqddo84l8cm15qe4il3q3").setSellerUserId("slinkys_emporium");
+		
+		transaction.addCustomField("coupon_code", "dollarMadness");
+		transaction.addCustomField("shipping_method", "FedEx Ground Courier");
+		transaction.addCustomField("is_first_time_buyer", false);
+		
+		// 2. Generate an {@link Transaction} instance from $transaction.json.
+		final Transaction $transaction = mapper.readValue(new FileInputStream("target/test-classes/$transaction_with_custom_fields.json"), Transaction.class);
+		Assert.assertNotNull($transaction);
+		
+		/*
+		 * ---
+		 * Both instances must be equal.
+		 */
+		Assert.assertEquals("Both instances must be equal", transaction, $transaction);
+	}
+	
+	/**
 	 * 1. Instantiate an {@link AddItemToCart} instance with the same values found in 
 	 * 	  $add_item_to_cart.json.
 	 * 

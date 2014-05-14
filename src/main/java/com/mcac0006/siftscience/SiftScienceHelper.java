@@ -20,7 +20,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 import com.mcac0006.siftscience.event.domain.Event;
 import com.mcac0006.siftscience.label.domain.Label;
-import com.mcac0006.siftscience.result.SiftScienceResult;
+import com.mcac0006.siftscience.result.domain.SiftScienceResponse;
+import com.mcac0006.siftscience.score.domain.SiftScienceScore;
 
 /**
  * This helper will take care of marshalling the content you wish to send to Sift Science and 
@@ -54,7 +55,7 @@ public class SiftScienceHelper {
 	 * @param event - the content regarding the user (or session) in question.
 	 * @return the Sift Science response which denotes whether the request has been processed successfully or not.
 	 */
-	public SiftScienceResult send(final Event event) {
+	public SiftScienceResponse send(final Event event) {
 		
 		event.setApiKey(apiKey);
 		
@@ -65,7 +66,7 @@ public class SiftScienceHelper {
 			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
 			final Response post = request.post(Entity.entity(mapper.writeValueAsString(event), MediaType.APPLICATION_JSON_TYPE));
 			
-			final SiftScienceResult siftResult = mapper.readValue(post.readEntity(String.class), SiftScienceResult.class);
+			final SiftScienceResponse siftResult = mapper.readValue(post.readEntity(String.class), SiftScienceResponse.class);
 			return siftResult;
 			
 		} catch (JsonGenerationException e) {
@@ -84,7 +85,7 @@ public class SiftScienceHelper {
 	 * @param label - the content regarding the user in question.
 	 * @return the Sift Science response which denotes whether the request has been processed successfully or not.
 	 */
-	public SiftScienceResult send(final String userId, final Label label) {
+	public SiftScienceResponse send(final String userId, final Label label) {
 		
 		label.setApiKey(apiKey);
 		
@@ -95,7 +96,7 @@ public class SiftScienceHelper {
 			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
 			final Response post = request.post(Entity.entity(mapper.writeValueAsString(label), MediaType.APPLICATION_JSON_TYPE));
 			
-			final SiftScienceResult siftResult = mapper.readValue(post.readEntity(String.class), SiftScienceResult.class);
+			final SiftScienceResponse siftResult = mapper.readValue(post.readEntity(String.class), SiftScienceResponse.class);
 			return siftResult;
 			
 		} catch (JsonGenerationException e) {
@@ -105,5 +106,37 @@ public class SiftScienceHelper {
 		} catch (IOException e) {
 			throw new RuntimeException("Error generating JSON content to send.", e);
 		}
+	}
+	
+	/**
+	 * Retrieve a risk assessment of a particular user. This is particularly useful to consult with Sift Science 
+	 * before you proceed with any (user-invoked or system-invoked) operations (such as a purchase) on that user.
+	 * 
+	 * @param userId - the user would you like to run a risk assessment on.
+	 * @return a Sift Science score wrapped in a {@link SiftScienceScore} instance containing information such as the 
+	 *         fraud score and the reason. 
+	 *         
+	 *         Refer to the class' JavaDocs for more information.
+	 */
+	public SiftScienceScore getScore(final String userId) {
+		
+		try {
+			
+			final Client client = ClientBuilder.newClient();
+			final WebTarget target = client.target("https://api.siftscience.com/v203/score/").path(userId).queryParam("api", apiKey);
+			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
+			final Response get = request.get();
+			
+			final SiftScienceScore score = mapper.readValue(get.readEntity(String.class), SiftScienceScore.class);
+			return score;
+			
+		} catch (JsonGenerationException e) {
+			throw new RuntimeException("Error generating JSON content to send.", e);
+		} catch (JsonMappingException e) {
+			throw new RuntimeException("Error generating JSON content to send.", e);
+		} catch (IOException e) {
+			throw new RuntimeException("Error generating JSON content to send.", e);
+		}
+		
 	}
 }

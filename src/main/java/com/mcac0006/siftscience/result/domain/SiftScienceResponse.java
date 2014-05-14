@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.mcac0006.siftscience.result;
+package com.mcac0006.siftscience.result.domain;
 
 /**
  * This is the response we receive from Sift Science.
@@ -9,7 +9,7 @@ package com.mcac0006.siftscience.result;
  * @author <a href="mailto:matthew.cachia@gmail.com">Matthew Cachia</a>
  *
  */
-public class SiftScienceResult {
+public class SiftScienceResponse {
 	
 	/**
 	 * This contains the error code of the request.

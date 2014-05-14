@@ -1,0 +1,33 @@
+{
+    "status": 0,
+    "error_message": "OK",
+    "score": 0.6022920863521355,
+    "reasons": [
+        {
+            "name": "Users per device",
+            "value": "2",
+            "details": {
+                "users": "ggre0001"
+            }
+        },
+        {
+            "name": "Transaction billing bin",
+            "value": "444433",
+            "details": {
+                "users": "user1"
+            }
+        },
+        {
+            "name": "Time since previous transaction",
+            "value": "0.003"
+        },
+        {
+            "name": "Users per browser+IP",
+            "value": "9",
+            "details": {
+                "users": "JLHBNCCELNGCPDHIFNJGNEGKNDOKDNHDDBJLPLMCIJAMKKNKOCNPPHCFBJGHDMKHCDCDMDNJJLKFMBBNHMHKMMGOBELIMFNKAMEGGDEHFMCOFMDKNOPEGPHDLMNOMAED,ggre0001,FGGFGDAHIFMAGALFDHMBGBENFMLPKMCGFDGOPCAG,al_capoopoo,DMEKDIEEPMLBHEJBPFCMPHJPIGEOBOPFAKGPAMDC,APBBICJCMAGIPNKMDPEMFFAGFCOOHJJCMCNPCLBD,NKDJKDOOFOGLELANDCFFLPOPJFGABIJAKPNIAHAJ,NLMPOHIPDNGDNKDADCAHKFILIBNFBKAJNMNLIEKB"
+            }
+        }
+    ],
+    "user_id": "mcac0006"
+}

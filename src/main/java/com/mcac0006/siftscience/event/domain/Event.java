@@ -84,6 +84,10 @@ public abstract class Event {
 	
 	@Override
 	public boolean equals(Object obj) {
+		
+		if (!super.equals(obj)) {
+			return false;
+		}
 
 		if (obj == null || !(obj instanceof Event)) {
 			return false;

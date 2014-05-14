@@ -50,7 +50,8 @@ final SiftScienceResult ssr = helper.send(event); //send the event to SiftScienc
 
 **Do you have a custom event of your own?**
 
-Creating a custom event is easy!
+3. Creating a custom event of your own (is easy!)
+----
 
 1. Create your own Java class and extend `com.mcac0006.siftscience.event.domain.Event`
 
@@ -58,16 +59,7 @@ Creating a custom event is easy!
 
 3. Make sure you override and implement the equals() method. You will need it for your JUnit test (below).
 
-4. **Recommended!** Create at least one JUnit test to make sure your class is being serialized properly. Check out `com.mcac0006.services.siftscience.SiftScienceBodyTests` to have a better idea on how this is done with the standard Event classes.
-
-3. This project is far from complete!
----------------
-
-Naming a few things which are left to be implemented:
-- support for Scores API
-- support for custom events
-**Would you like to contribute?**
-Feel free to fork and add more support to the APIs. Don't forget to provide JUnit tests (check out the existing ones to get an idea).
+4. **Recommended!** Create at least one JUnit test to make sure your class is being serialized properly. Check out `com.mcac0006.services.siftscience.SiftScienceBodyTest` to have a better idea on how this is done with the standard Event classes.
 
  
 4. License

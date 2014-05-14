@@ -35,7 +35,7 @@ import com.mcac0006.siftscience.score.domain.SiftScienceScore;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(ClientBuilder.class)
-public class SiftScienceScoreTests {
+public class SiftScienceScoreTest {
 	
 	@Mock
 	private Response responseMock;

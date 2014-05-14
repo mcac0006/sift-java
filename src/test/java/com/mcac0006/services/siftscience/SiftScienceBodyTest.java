@@ -35,7 +35,7 @@ import com.mcac0006.siftscience.types.SubmissionStatus;
 import com.mcac0006.siftscience.types.TransactionStatus;
 import com.mcac0006.siftscience.types.TransactionType;
 
-public class SiftScienceBodyTests {
+public class SiftScienceBodyTest {
 	
 	private ObjectMapper mapper;
 	

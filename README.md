@@ -47,6 +47,13 @@ label.setX(...).setY(...).setZ(...); //fill in all fields using setters
 final SiftScienceResult ssr = helper.send(event); //send the event to SiftScience
 ```
 
+```
+// If you're interested in getting the SiftScore for that particular user ...
+final SiftScienceScore score = helper.getScore('mcac0006');
+// Use the getters to retrieve the score information, such as ...
+score.getScore();
+```
+
 
 **Do you have a custom event of your own?**
 

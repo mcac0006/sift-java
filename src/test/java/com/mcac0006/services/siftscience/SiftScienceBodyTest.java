@@ -2,6 +2,7 @@ package com.mcac0006.services.siftscience;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Date;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -76,6 +77,48 @@ public class SiftScienceBodyTest {
 		
 		// 2. Generate an {@link Transaction} instance from $transaction.json.
 		final Transaction $transaction = mapper.readValue(new FileInputStream("target/test-classes/$transaction.json"), Transaction.class);
+		Assert.assertNotNull($transaction);
+		
+		/*
+		 * ---
+		 * Both instances must be equal.
+		 */
+		Assert.assertEquals("Both instances must be equal", transaction, $transaction);
+	}
+	
+	/**
+	 * 1. Instantiate an {@link Transaction} instance with the same values found in 
+	 * 	  $historical_transaction.json.
+	 * 
+	 * 2. Generate an {@link Transaction} instance from $historical_transaction.json.
+	 * ---
+	 * Both instances must be equal.
+	 * 
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
+	@Test
+	@SuppressWarnings("deprecation")
+	public void historicalTransactionTest() throws JsonGenerationException, JsonMappingException, IOException {
+		
+		// 1. Instantiate an {@link Transaction} instance with the same values found in $historical_transaction.json.
+		final Address billingAddress = new Address();
+		billingAddress.setName("Bill Jones").setPhone("1-415-555-6041").setAddressLine1("2100 Main Street").setAddressLine2("Apt 3B").setCity("New London").setRegion("New Hampshire").setCountry("US").setZipCode("03257");
+		
+		final PaymentMethod paymentMethod = new PaymentMethod();
+		paymentMethod.setPaymentType(PaymentType.CREDIT_CARD).setPaymentGateway(PaymentGateway.BRAINTREE).setCardBIN("542486").setCardLast4("4444");
+		
+		final Address shippingAddress = new Address();
+		shippingAddress.setAddressLine1("2100 Main Street").setAddressLine2("Apt 3B").setCity("New London").setRegion("New Hampshire").setCountry("US").setZipCode("03257");
+		
+		final Transaction transaction = new Transaction();
+		transaction.setApiKey("INSERT_API_KEY_HERE");
+		transaction.setTime(new Date(112, 10, 8, 0, 0, 0));
+		transaction.setUserId("billy_jones_301").setUserEmail("bill@gmail.com").setTransactionType(TransactionType.SALE).setTransactionStatus(TransactionStatus.SUCCESS).setAmount(5067900000l).setCurrencyCode("USD").setOrderId("ORDER-123124124").setTransactionId("719637215").setBillingAddress(billingAddress).setPaymentMethod(paymentMethod).setShippingAddress(shippingAddress).setSessionId("gigtleqddo84l8cm15qe4il3q3").setSellerUserId("slinkys_emporium");
+		
+		// 2. Generate an {@link Transaction} instance from $historical_transaction.json.
+		final Transaction $transaction = mapper.readValue(new FileInputStream("target/test-classes/$historical_transaction.json"), Transaction.class);
 		Assert.assertNotNull($transaction);
 		
 		/*
@@ -510,6 +553,38 @@ public class SiftScienceBodyTest {
 		
 		// 2. Generate an {@link Label} instance from $label.json.
 		final Label $label = mapper.readValue(new FileInputStream("target/test-classes/$label.json"), Label.class);
+		Assert.assertNotNull($label);
+		
+		/*
+		 * ---
+		 * Both instances must be equal.
+		 */
+		Assert.assertEquals("Both instances must be equal", label, $label);
+	}
+	
+	/**
+	 * 1. Instantiate an {@link Label} instance with the same values found in 
+	 * 	  $historical_label.json.
+	 * 
+	 * 2. Generate an {@link Label} instance from $historical_label.json.
+	 * ---
+	 * Both instances must be equal.
+	 * 
+	 * @throws JsonGenerationException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
+	@Test
+	public void createHistoricalLabel() throws JsonGenerationException, JsonMappingException, IOException {
+		
+		// 1. Instantiate an {@link Label} instance with the same values found in $historical_label.json.
+		final Label label = new Label();
+		label.setApiKey("INSERT_API_KEY_HERE");
+		label.setTime(new Date(112, 10, 8, 0, 0, 0));
+		label.setIsBad(true).setReasons(new Reason[]{Reason.CHARGEBACK}).setDescription("Freeform text describing the user or incident.");
+		
+		// 2. Generate an {@link Label} instance from $historical_label.json.
+		final Label $label = mapper.readValue(new FileInputStream("target/test-classes/$historical_label.json"), Label.class);
 		Assert.assertNotNull($label);
 		
 		/*

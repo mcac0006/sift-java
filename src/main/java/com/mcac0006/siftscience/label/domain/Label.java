@@ -4,11 +4,16 @@
 package com.mcac0006.siftscience.label.domain;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import com.mcac0006.siftscience.event.domain.Transaction;
 import com.mcac0006.siftscience.types.Reason;
+import com.mcac0006.siftscience.types.deserializer.DateDeserializer;
+import com.mcac0006.siftscience.types.serializer.DateSerializer;
 
 /**
  * Use the Labels to identify bad users for Sift Science's machine learning system. 
@@ -48,6 +53,19 @@ public class Label {
 	 */
 	@JsonProperty("$description")
 	private String description;
+	
+	/**
+	 * Include this field in your API requests when sending historical events. 
+	 * The value is the date and time of the historical time that the action took place.
+	 * 
+	 * Refer to Sift Science's 
+	 * <a href="https://siftscience.com/docs/tutorials/sending-historical-data/">Sending Historical Data</a> 
+	 * for more information.
+	 */
+	@JsonProperty(value="$time")
+	@JsonSerialize(using=DateSerializer.class)
+	@JsonDeserialize(using=DateDeserializer.class)
+	private Date time;
 
 	public void setApiKey(String apiKey) {
 		this.apiKey = apiKey;
@@ -84,6 +102,14 @@ public class Label {
 		return this;
 	}
 	
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 
@@ -122,6 +148,14 @@ public class Label {
 				return false;
 			}
 		} else if (!Arrays.equals(this.reasons, l.getReasons())) {
+			return false;
+		}
+		
+		if (this.time == null) {
+			if (l.getTime() != null) {
+				return false;
+			}
+		} else if (!this.time.equals(l.getTime())) {
 			return false;
 		}
 		

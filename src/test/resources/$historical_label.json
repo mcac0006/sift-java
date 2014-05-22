@@ -1,0 +1,8 @@
+{
+  "$api_key"     : "INSERT_API_KEY_HERE",
+  "$is_bad"      : true,
+  "$reasons"     : ["$chargeback"],
+  "$description" : "Freeform text describing the user or incident.",
+  
+  "$time"             : 1352329200
+}

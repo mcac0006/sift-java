@@ -3,12 +3,18 @@
  */
 package com.mcac0006.siftscience.event.domain;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.codehaus.jackson.annotate.JsonAnyGetter;
 import org.codehaus.jackson.annotate.JsonAnySetter;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.mcac0006.siftscience.types.deserializer.DateDeserializer;
+import com.mcac0006.siftscience.types.serializer.DateSerializer;
 
 /**
  * @author <a href="mailto:matthew.cachia@gmail.com">Matthew Cachia</a>
@@ -28,6 +34,19 @@ public abstract class Event {
 	 */
 	@JsonProperty(value="$api_key")
 	private String apiKey;
+	
+	/**
+	 * Include this field in your API requests when sending historical events. 
+	 * The value is the date and time of the historical time that the action took place.
+	 * 
+	 * Refer to Sift Science's 
+	 * <a href="https://siftscience.com/docs/tutorials/sending-historical-data/">Sending Historical Data</a> 
+	 * for more information.
+	 */
+	@JsonProperty(value="$time")
+	@JsonSerialize(using=DateSerializer.class)
+	@JsonDeserialize(using=DateDeserializer.class)
+	private Date time;
 	
 	/**
 	 * Sift Science also supports additional information which might be analyzed and 
@@ -82,6 +101,14 @@ public abstract class Event {
 		customFields.put(key, value);
 	}
 	
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 
@@ -112,6 +139,14 @@ public abstract class Event {
 				return false;
 			}
 		} else if (!this.customFields.equals(e.getCustomFields())) {
+			return false;
+		}
+		
+		if (this.time == null) {
+			if (e.getTime() != null) {
+				return false;
+			}
+		} else if (!this.time.equals(e.getTime())) {
 			return false;
 		}
 		

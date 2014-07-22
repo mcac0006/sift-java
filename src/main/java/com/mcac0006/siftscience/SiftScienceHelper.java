@@ -123,7 +123,7 @@ public class SiftScienceHelper {
 		try {
 			
 			final Client client = ClientBuilder.newClient();
-			final WebTarget target = client.target("https://api.siftscience.com/v203/score/").path(userId).queryParam("api", apiKey);
+			final WebTarget target = client.target("https://api.siftscience.com/v203/score/").path(userId).queryParam("api_key", apiKey);
 			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
 			final Response get = request.get();
 			

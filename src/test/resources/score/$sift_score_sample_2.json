@@ -1,0 +1,94 @@
+{
+    "status": 0,
+    "error_message": "OK",
+    "score": 0.9340580293938543,
+    "reasons": [
+        {
+            "name": "Latest billing address country",
+            "value": "NZ"
+        },
+        {
+            "name": "Failed transactionss per hour",
+            "value": "4"
+        },
+        {
+            "name": "Latest billing address name",
+            "value": "Ray Weston"
+        },
+        {
+            "name": "Transactions per hour",
+            "value": "6"
+        },
+        {
+            "name": "Time since previous transaction",
+            "value": "0"
+        },
+        {
+            "name": "Time since previous event",
+            "value": "0"
+        },
+        {
+            "name": "Latest billing address city",
+            "value": "Berfaler"
+        },
+        {
+            "name": "Failed transactionss per week",
+            "value": "40"
+        },
+        {
+            "name": "Failed transactionss per day",
+            "value": "16"
+        },
+        {
+            "name": "Latest billing address address 1",
+            "value": "Santorama street 1190-4"
+        },
+        {
+            "name": "Original amount",
+            "value": "1500"
+        },
+        {
+            "name": "Purchase amount in USD",
+            "value": "1574.25"
+        },
+        {
+            "name": "Email address",
+            "value": "futudabehog@hotmail.com"
+        },
+        {
+            "name": "Unique Bank Identification Numbers",
+            "value": "19"
+        },
+        {
+            "name": "Transactions per minute",
+            "value": "4"
+        },
+        {
+            "name": "Credit card country",
+            "value": "AE"
+        },
+        {
+            "name": "Purchase totals per week",
+            "value": "8144.778"
+        },
+        {
+            "name": "Credit card bank",
+            "value": "NATIONAL BANK OF RAS AL-KHAIMAH (RAKBANK)",
+            "details": {
+                "users": "PDBKKIGJNHCPDLNGLNFGBDDEPGBPPLCJDPMNLPHC,BHONOOMIPOJDMJJMDAKGIAGOMIGLNKLEKNLDBCEB,JEJLAIJJILJEGEINBJNKGJIFDDJPKCGOLCNDFPLO,CJGKAEOGCBIJPMAFBLOEHBPPHKFACOCCPHENOBPK"
+            }
+        },
+        {
+            "name": "Transactions per day",
+            "value": "2"
+        }
+    ],
+    "user_id": "FGJJKOIEDDLCAGLNCHLKICOGCCCMCILDJCFCEOIF",
+    "latest_label": {
+        "is_bad": true,
+        "time": 1405494666,
+        "reasons": [
+            "$chargeback"
+        ]
+    }
+}

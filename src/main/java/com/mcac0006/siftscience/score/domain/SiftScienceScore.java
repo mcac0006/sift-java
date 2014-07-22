@@ -7,7 +7,6 @@ import java.util.Arrays;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import com.mcac0006.siftscience.label.domain.Label;
 
 /**
  * This class represents the score which is received from Sift Science about 

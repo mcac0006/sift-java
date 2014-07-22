@@ -33,12 +33,12 @@ public class Reason {
 	private String name;
 	
 	/**
-	 * A value related to this reason. This value gives numerical information on the 
+	 * A value related to this reason. This value contains information on this 
 	 * particular reason. e.g. "Users per device" will give you a number to explain 
 	 * just how many users are sharing that device.
 	 * 
 	 */
-	private double value;
+	private String value;
 	
 	/**
 	 * Some further information on the reason. These are key-value optional pairs.
@@ -55,7 +55,7 @@ public class Reason {
 		return name;
 	}
 
-	public final double getValue() {
+	public final String getValue() {
 		return value;
 	}
 	
@@ -71,7 +71,7 @@ public class Reason {
 		this.name = name;
 	}
 
-	public final void setValue(double value) {
+	public final void setValue(String value) {
 		this.value = value;
 	}
 	

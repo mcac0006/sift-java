@@ -76,9 +76,15 @@ public abstract class Event {
 	
 	
 	protected Event(final String eventType) {
+		super();
 		this.eventType = eventType;
 	}
 	
+	protected Event(String eventType, String apiKey) {
+		this(eventType);
+		this.apiKey = apiKey;
+	}
+
 	public String getApiKey() {
 		return apiKey;
 	}

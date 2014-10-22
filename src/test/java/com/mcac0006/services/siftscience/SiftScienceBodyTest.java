@@ -574,6 +574,7 @@ public class SiftScienceBodyTest {
 	 * @throws JsonMappingException
 	 * @throws IOException
 	 */
+	@SuppressWarnings("deprecation")
 	@Test
 	public void createHistoricalLabel() throws JsonGenerationException, JsonMappingException, IOException {
 		

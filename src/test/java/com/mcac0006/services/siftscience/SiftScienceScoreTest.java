@@ -70,7 +70,7 @@ public class SiftScienceScoreTest {
 		final InputStream inputStream = new FileInputStream("target/test-classes/score/$sift_score_sample.json");
 		Mockito.when(responseMock.readEntity(String.class)).thenReturn(IOUtils.toString(inputStream));
 		
-		final SiftScienceScore scoreFromSS = new SiftScienceHelper("123").getScore("mcac0006");
+		final SiftScienceScore scoreFromSS = SiftScienceHelper.getScore("123", "mcac0006");
 		
 		
 		final SiftScienceScore scoreToAssertAgainst = new SiftScienceScore();
@@ -110,7 +110,7 @@ public class SiftScienceScoreTest {
 		final InputStream inputStream = new FileInputStream("target/test-classes/score/$sift_score_sample_2.json");
 		Mockito.when(responseMock.readEntity(String.class)).thenReturn(IOUtils.toString(inputStream));
 		
-		final SiftScienceScore scoreFromSS = new SiftScienceHelper("123").getScore("mcac0006");
+		final SiftScienceScore scoreFromSS = SiftScienceHelper.getScore("123", "mcac0006");
 		
 		
 		final SiftScienceScore scoreToAssertAgainst = new SiftScienceScore();
@@ -216,7 +216,7 @@ public class SiftScienceScoreTest {
 		final InputStream inputStream = new FileInputStream("target/test-classes/score/$sift_score_unknown_user_sample.json");
 		Mockito.when(responseMock.readEntity(String.class)).thenReturn(IOUtils.toString(inputStream));
 		
-		final SiftScienceScore scoreFromSS = new SiftScienceHelper("123").getScore("mcac0006");
+		final SiftScienceScore scoreFromSS = SiftScienceHelper.getScore("123", "mcac0006");
 		
 		final SiftScienceScore scoreToAssertAgainst = new SiftScienceScore();
 		scoreToAssertAgainst.setStatus((short)54);

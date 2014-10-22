@@ -8,26 +8,27 @@ This library has been made using Jersey (https://jersey.java.net) for the transp
 1. Installation (using Maven)
 -----------------------------
 
-The library is not distributed anywhere yet, so you will need to `mvn install` it and add the following dependency to your project:
+The library is distributed via Sonatype - just add the following dependency to your project and it will download by itself:
 
 ```
 <dependency>  
-	<groupId>com.mcac0006.siftscience</groupId>  
+	<groupId>com.github.mcac0006</groupId>  
 	<artifactId>sift-java</artifactId>  
-	<version>1.0.0-SNAPSHOT</version>  
+	<version>0.0.1</version>  
 </dependency>
 ```
 
 2. How to use
 -------------
 
-```
-final SiftScience helper = new SiftScience('API_KEY_GOES_HERE'); // instantiate the helper
-```
+`SiftScienceHelper` contains a static of methods which can be used to send and receive requests with SiftScience using Jersey (https://jersey.java.net) to send and receive HTTP requests/responses. 
+
+
 
 ```
-// Sending a an Event is easy! Let's create a Transaction ($transaction) event.
-final Event event = new Transaction(); // create an event
+// Sending a an Event (such as a Transaction) is easy! Let's create a Transaction ($transaction) event.
+Event event = new Transaction(); // create an event
+event.setApiKey("API_KEY_GOES_HERE");
 event.setX(...).setY(...).setZ(...); //fill in all fields using setters
 
 // ... you can also add custom fields of your own to any event!
@@ -35,25 +36,41 @@ event.addCustomField('key1', 'value1');
 event.addCustomField('key2', 'value2');
 ...
 
-final SiftScienceResult ssr = helper.send(event); //send the event to SiftScience
+SiftScienceResult ssr = SiftScienceHelper.send(event); //send the event to Sift Science
 
 ```
 
 ```
 // Labels are also created in the same fashion
-final Label label = new Label(); // create an event
+Label label = new Label(); // create an event
+label.setApiKey("API_KEY_GOES_HERE");
 label.setX(...).setY(...).setZ(...); //fill in all fields using setters
 
-final SiftScienceResult ssr = helper.send(event); //send the event to SiftScience
+SiftScienceResult ssr = SiftScienceHelper.send(event); //send the event to Sift Science
 ```
 
 ```
 // If you're interested in getting the SiftScore for that particular user ...
-final SiftScienceScore score = helper.getScore('mcac0006');
+SiftScienceScore score = SiftScienceHelper.getScore("API_KEY_GOES_HERE", "mcac0006");
 // Use the getters to retrieve the score information, such as ...
 score.getScore();
 ```
 
+**Using your own Http client?** You can use this library just to serialize/deserialize objects to JSON-ready requests!
+
+``
+// ...
+// creation of Event/Label
+// ...
+
+```
+String $transaction = SiftScienceHelper.serialize(event); // serialize an event such as a $transaction
+String $label = SiftScienceHelper.serialize(label); // serialize a $label
+
+SiftScienceResponse response = SiftScienceHelper.deserializeResponse($response); // create a POJO out of the response returned after submitting an $event or $label.
+
+SiftScienceScore score = SiftScienceHelper.deserializeScore($scoreResponse); // create a POJO out of the response returned by Sift Science for a particular user.
+```
 
 **Do you have a custom event of your own?**
 

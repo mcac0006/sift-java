@@ -10,7 +10,6 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-import com.mcac0006.siftscience.event.domain.Transaction;
 import com.mcac0006.siftscience.types.Reason;
 import com.mcac0006.siftscience.types.deserializer.DateDeserializer;
 import com.mcac0006.siftscience.types.serializer.DateSerializer;

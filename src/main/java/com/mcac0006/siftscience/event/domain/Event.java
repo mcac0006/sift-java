@@ -3,6 +3,7 @@
  */
 package com.mcac0006.siftscience.event.domain;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +13,7 @@ import org.codehaus.jackson.annotate.JsonAnySetter;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 import com.mcac0006.siftscience.types.deserializer.DateDeserializer;
 import com.mcac0006.siftscience.types.serializer.DateSerializer;
@@ -44,9 +46,9 @@ public abstract class Event {
 	 * for more information.
 	 */
 	@JsonProperty(value="$time")
-	@JsonSerialize(using=DateSerializer.class)
+	@JsonSerialize(using=DateSerializer.class, include=Inclusion.NON_EMPTY)
 	@JsonDeserialize(using=DateDeserializer.class)
-	private Date time;
+	private Calendar time;
 	
 	/**
 	 * Sift Science also supports additional information which might be analyzed and 
@@ -106,12 +108,12 @@ public abstract class Event {
 	public final void addCustomField(final String key, final Object value) {
 		customFields.put(key, value);
 	}
-	
-	public Date getTime() {
+
+	public Calendar getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(Calendar time) {
 		this.time = time;
 	}
 

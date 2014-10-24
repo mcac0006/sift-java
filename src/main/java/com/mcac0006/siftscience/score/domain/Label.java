@@ -4,11 +4,12 @@
 package com.mcac0006.siftscience.score.domain;
 
 import java.util.Arrays;
-import java.util.Date;
+import java.util.Calendar;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 import com.mcac0006.siftscience.types.Reason;
 import com.mcac0006.siftscience.types.deserializer.DateDeserializer;
@@ -56,9 +57,9 @@ public class Label {
 	 * for more information.
 	 */
 	@JsonProperty(value="time")
-	@JsonSerialize(using=DateSerializer.class)
+	@JsonSerialize(using=DateSerializer.class, include=Inclusion.NON_EMPTY)
 	@JsonDeserialize(using=DateDeserializer.class)
-	private Date time;
+	private Calendar time;
 
 	public Boolean getIsBad() {
 		return isBad;
@@ -87,11 +88,11 @@ public class Label {
 		return this;
 	}
 	
-	public Date getTime() {
+	public Calendar getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(Calendar time) {
 		this.time = time;
 	}
 

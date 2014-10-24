@@ -6,7 +6,7 @@ package com.mcac0006.services.siftscience;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -68,9 +68,7 @@ public class SiftScienceScoreTest {
 		
 		// let's load up the score sample file
 		final InputStream inputStream = new FileInputStream("target/test-classes/score/$sift_score_sample.json");
-		Mockito.when(responseMock.readEntity(String.class)).thenReturn(IOUtils.toString(inputStream));
-		
-		final SiftScienceScore scoreFromSS = SiftScienceHelper.getScore("123", "mcac0006");
+		final SiftScienceScore scoreFromSS = SiftScienceHelper.deserializeScore(IOUtils.toString(inputStream));
 		
 		
 		final SiftScienceScore scoreToAssertAgainst = new SiftScienceScore();
@@ -108,9 +106,7 @@ public class SiftScienceScoreTest {
 		
 		// let's load up the score sample file
 		final InputStream inputStream = new FileInputStream("target/test-classes/score/$sift_score_sample_2.json");
-		Mockito.when(responseMock.readEntity(String.class)).thenReturn(IOUtils.toString(inputStream));
-		
-		final SiftScienceScore scoreFromSS = SiftScienceHelper.getScore("123", "mcac0006");
+		final SiftScienceScore scoreFromSS = SiftScienceHelper.deserializeScore(IOUtils.toString(inputStream));
 		
 		
 		final SiftScienceScore scoreToAssertAgainst = new SiftScienceScore();
@@ -123,7 +119,8 @@ public class SiftScienceScoreTest {
 		label.setIsBad(true);
 		com.mcac0006.siftscience.types.Reason[] reasons = new com.mcac0006.siftscience.types.Reason[1];
 		reasons[0] = com.mcac0006.siftscience.types.Reason.CHARGEBACK;
-		label.setTime(new Date(((long)1405494666*1000)));
+		final Calendar cal = Calendar.getInstance(); cal.setTimeInMillis((long)1405494666*1000);
+		label.setTime(cal);
 		label.setReasons(reasons);
 		scoreToAssertAgainst.setLatestLabel(label);
 		
@@ -214,9 +211,7 @@ public class SiftScienceScoreTest {
 		
 		// let's load up the score sample file
 		final InputStream inputStream = new FileInputStream("target/test-classes/score/$sift_score_unknown_user_sample.json");
-		Mockito.when(responseMock.readEntity(String.class)).thenReturn(IOUtils.toString(inputStream));
-		
-		final SiftScienceScore scoreFromSS = SiftScienceHelper.getScore("123", "mcac0006");
+		final SiftScienceScore scoreFromSS = SiftScienceHelper.deserializeScore(IOUtils.toString(inputStream));
 		
 		final SiftScienceScore scoreToAssertAgainst = new SiftScienceScore();
 		scoreToAssertAgainst.setStatus((short)54);

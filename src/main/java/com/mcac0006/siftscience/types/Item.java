@@ -50,19 +50,19 @@ public class Item {
 	 * The <a href="http://en.wikipedia.org/wiki/Universal_Product_Code">Universal Product Code</a> of the item, if available.
 	 */
 	@JsonProperty("$upc")
-	private String UPC;
+	private String upc;
 	
 	/**
 	 * The <a href="http://en.wikipedia.org/wiki/Stock_keeping_unit">Stock Keeping Unit</a>, if available.
 	 */
 	@JsonProperty("$sku")
-	private String SKU;
+	private String sku;
 	
 	/**
 	 * The <a href="http://en.wikipedia.org/wiki/International_Standard_Book_Number">International Standard Book Number</a>, if available.
 	 */
 	@JsonProperty("$isbn")
-	private String ISBN;
+	private String isbn;
 	
 	/**
 	 * The brand name of the item.
@@ -120,16 +120,16 @@ public class Item {
 		return quantity;
 	}
 
-	public String getUPC() {
-		return UPC;
+	public String getUpc() {
+		return upc;
 	}
 
-	public String getSKU() {
-		return SKU;
+	public String getSku() {
+		return sku;
 	}
 
-	public String getISBN() {
-		return ISBN;
+	public String getIsbn() {
+		return isbn;
 	}
 
 	public String getBrand() {
@@ -181,18 +181,18 @@ public class Item {
 		return this;
 	}
 
-	public Item setUPC(String uPC) {
-		UPC = uPC;
+	public Item setUpc(String upc) {
+		this.upc = upc;
 		return this;
 	}
 
-	public Item setSKU(String sKU) {
-		SKU = sKU;
+	public Item setSku(String sku) {
+		this.sku = sku;
 		return this;
 	}
 
-	public Item setISBN(String iSBN) {
-		ISBN = iSBN;
+	public Item setIsbn(String isbn) {
+		this.isbn = isbn;
 		return this;
 	}
 
@@ -267,11 +267,11 @@ public class Item {
 			return false;
 		}
 		
-		if (this.ISBN == null) {
-			if (item.getISBN() != null) {
+		if (this.isbn == null) {
+			if (item.getIsbn() != null) {
 				return false;
 			}
-		} else if (!this.ISBN.equals(item.getISBN())) {
+		} else if (!this.isbn.equals(item.getIsbn())) {
 			return false;
 		}
 		
@@ -323,11 +323,11 @@ public class Item {
 			return false;
 		}
 		
-		if (this.SKU == null) {
-			if (item.getSKU() != null) {
+		if (this.sku == null) {
+			if (item.getSku() != null) {
 				return false;
 			}
-		} else if (!this.SKU.equals(item.getSKU())) {
+		} else if (!this.sku.equals(item.getSku())) {
 			return false;
 		}
 		
@@ -339,11 +339,11 @@ public class Item {
 			return false;
 		}
 		
-		if (this.UPC == null) {
-			if (item.getUPC() != null) {
+		if (this.upc == null) {
+			if (item.getUpc() != null) {
 				return false;
 			}
-		} else if (!this.UPC.equals(item.getUPC())) {
+		} else if (!this.upc.equals(item.getUpc())) {
 			return false;
 		}
 		

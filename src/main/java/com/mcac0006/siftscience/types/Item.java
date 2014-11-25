@@ -71,7 +71,7 @@ public class Item {
 	private String brand;
 	
 	/**
-	 * Name of the item’s manufacturer.
+	 * Name of the item's manufacturer.
 	 */
 	@JsonProperty("$manufacturer")
 	private String manufacturer;

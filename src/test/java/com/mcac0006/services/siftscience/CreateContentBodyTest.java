@@ -17,15 +17,16 @@ public class CreateContentBodyTest {
 
     @Test
     public void createContentTest() throws IOException {
-        final CreateContent create_order = new CreateContent();
         String expectedApiKey = "INSERT_API_KEY_HERE";
-        create_order.setApiKey(expectedApiKey);
         String expectedUserId = "john_doe";
         String expectedSessionId = "abcabcabc";
         String expectedContactEmail = "test@siftscience.com";
         String expectedContactPhone = "1-800-123-1234";
         String expectedSubject = "Subject";
         String expectedContent = "Lorem ipsum dolor sit amet";
+
+        final CreateContent create_order = new CreateContent();
+        create_order.setApiKey(expectedApiKey);
         create_order.setUserId(expectedUserId).setSessionId(expectedSessionId).setContactEmail(expectedContactEmail).setContactPhone(expectedContactPhone).setSubject(expectedSubject).setContent(expectedContent);
 
         final String json = SiftScienceHelper.serialize(create_order); // the json object we will be asserting

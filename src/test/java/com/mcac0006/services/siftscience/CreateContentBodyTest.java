@@ -16,7 +16,6 @@ import static com.mcac0006.services.siftscience.AssertJsonKeys.assertEquals;
 public class CreateContentBodyTest {
 
     @Test
-    @SuppressWarnings("unchecked")
     public void createContentTest() throws IOException {
         final CreateContent create_order = new CreateContent();
         String expectedApiKey = "INSERT_API_KEY_HERE";
@@ -31,8 +30,7 @@ public class CreateContentBodyTest {
 
         final String json = SiftScienceHelper.serialize(create_order); // the json object we will be asserting
 
-        final Object read = JsonPath.read(json, "$");
-        final LinkedHashMap<String, Object> $ = (LinkedHashMap<String, Object>) read;
+        final LinkedHashMap<String, Object> $ = JsonPath.read(json, "$");
 
         // assert first level
         final List<String> $expectedKeys = Arrays.asList("$type", "$api_key", "$user_id", "$session_id", "$contact_email", "$contact_phone", "$subject", "$content");

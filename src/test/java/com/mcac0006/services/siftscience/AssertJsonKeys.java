@@ -10,7 +10,7 @@ public final class AssertJsonKeys {
     /**
      * Asserts that the keys in the given jsonObject are there and no extra/missing keys are found.
      *
-     * @param jsonObject - the list of
+     * @param jsonKeys - the list of
      * @param expectedKeys
      */
     public static void assertEquals(final Set<String> jsonKeys, final List<String> expectedKeys) {

@@ -23,21 +23,10 @@ import com.mcac0006.siftscience.types.PaymentType;
 import com.mcac0006.siftscience.types.TransactionStatus;
 import com.mcac0006.siftscience.types.TransactionType;
 
+import static com.mcac0006.services.siftscience.AssertJsonKeys.assertEquals;
+
 public class TransactionBodyTest {
 
-	/**
-	 * Asserts that the keys in the given jsonObject are there and no extra/missing keys are found.
-	 * 
-	 * @param jsonObject - the list of 
-	 * @param expectedKeys
-	 */
-	private void assertEquals(final Set<String> jsonKeys, final List<String> expectedKeys) {
-		
-		Assert.assertEquals(String.format("Number of expected keys [%s] not the same: [%s].", expectedKeys.size(), jsonKeys.size()), expectedKeys.size(), jsonKeys.size());
-		for (final String key: expectedKeys)
-			Assert.assertTrue(String.format("Key [%s] expected.", key), jsonKeys.contains(key));
-	}
-	
 	/**
 	 * 
 	 * @throws JsonGenerationException

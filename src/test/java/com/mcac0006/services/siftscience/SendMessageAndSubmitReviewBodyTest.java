@@ -17,21 +17,10 @@ import com.mcac0006.siftscience.event.domain.SendMessage;
 import com.mcac0006.siftscience.event.domain.SubmitReview;
 import com.mcac0006.siftscience.types.SubmissionStatus;
 
+import static com.mcac0006.services.siftscience.AssertJsonKeys.assertEquals;
+
 public class SendMessageAndSubmitReviewBodyTest {
 
-	/**
-	 * Asserts that the keys in the given jsonObject are there and no extra/missing keys are found.
-	 * 
-	 * @param jsonObject - the list of 
-	 * @param expectedKeys
-	 */
-	private void assertEquals(final Set<String> jsonKeys, final List<String> expectedKeys) {
-		
-		Assert.assertEquals("Number of keys different from expected. Expected keys [%s].", expectedKeys.size(), jsonKeys.size());
-		for (final String key: expectedKeys)
-			Assert.assertTrue(String.format("Key [%s] expected.", key), jsonKeys.contains(key));
-	}
-	
 	@Test
 	@SuppressWarnings("unchecked")
 	public void sendMessageTest() throws JsonGenerationException, JsonMappingException, IOException {

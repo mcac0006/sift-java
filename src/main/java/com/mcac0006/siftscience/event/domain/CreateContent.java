@@ -113,4 +113,33 @@ public class CreateContent extends Event {
         this.content = content;
         return this;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        CreateContent that = (CreateContent) o;
+
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
+        if (sessionId != null ? !sessionId.equals(that.sessionId) : that.sessionId != null) return false;
+        if (contactEmail != null ? !contactEmail.equals(that.contactEmail) : that.contactEmail != null) return false;
+        if (contactPhone != null ? !contactPhone.equals(that.contactPhone) : that.contactPhone != null) return false;
+        if (subject != null ? !subject.equals(that.subject) : that.subject != null) return false;
+        return content != null ? content.equals(that.content) : that.content == null;
+
+    }
+
+    @Override
+    // auto-generated with intellij idea 15
+    public int hashCode() {
+        int result = userId != null ? userId.hashCode() : 0;
+        result = 31 * result + (sessionId != null ? sessionId.hashCode() : 0);
+        result = 31 * result + (contactEmail != null ? contactEmail.hashCode() : 0);
+        result = 31 * result + (contactPhone != null ? contactPhone.hashCode() : 0);
+        result = 31 * result + (subject != null ? subject.hashCode() : 0);
+        result = 31 * result + (content != null ? content.hashCode() : 0);
+        return result;
+    }
 }

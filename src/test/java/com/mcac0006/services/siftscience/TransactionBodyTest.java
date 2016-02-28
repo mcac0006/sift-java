@@ -167,7 +167,7 @@ public class TransactionBodyTest {
 		
 		// then assert the values
 		Assert.assertEquals("INSERT_API_KEY_HERE", $.get("$api_key"));
-		Assert.assertEquals(1352329200, $.get("$time"));
+		Assert.assertEquals((int) (cal.getTimeInMillis() / 1000), $.get("$time"));
 		Assert.assertEquals("$transaction", $.get("$type"));
 		
 		Assert.assertEquals("billy_jones_301", $.get("$user_id"));

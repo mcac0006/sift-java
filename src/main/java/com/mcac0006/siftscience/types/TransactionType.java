@@ -16,24 +16,18 @@ import com.mcac0006.siftscience.types.deserializer.TransactionTypeDeserializer;
 @JsonDeserialize(using=TransactionTypeDeserializer.class)
 public enum TransactionType {
 
-	SALE("$sale"),
-	AUTHORIZE("$authorize"),
-	CAPTURE("$capture"),
-	VOID("$void"),
-	REFUND("$refund"),
-	DEPOSIT("$deposit"),
-	WITHDRAWAL("$withdrawal"),
-	TRANSFER("$transfer");
-	
-	private String siftScienceValue;
-
-	private TransactionType(String siftScienceValue) {
-		this.siftScienceValue = siftScienceValue;
-	}
+	SALE,
+	AUTHORIZE,
+	CAPTURE,
+	VOID,
+	REFUND,
+	DEPOSIT,
+	WITHDRAWAL,
+	TRANSFER;
 
 	@JsonValue
 	public String getSiftScienceValue() {
-		return siftScienceValue;
+		return "$" + name().toLowerCase();
 	}
 	
 	public static TransactionType resolve(final String siftScienceValue) {

@@ -10,6 +10,7 @@ import com.mcac0006.siftscience.types.deserializer.TransactionTypeDeserializer;
  * The type of transaction being recorded. There are five types.
  * 
  * @author <a href="mailto:matthew.cachia@gmail.com">Matthew Cachia</a>
+ * @author <a href="mailto:gonzalob@gonz0.com.ar">Gonzalo Bermúdez</a>
  *
  */
 @JsonDeserialize(using=TransactionTypeDeserializer.class)
@@ -19,7 +20,10 @@ public enum TransactionType {
 	AUTHORIZE("$authorize"),
 	CAPTURE("$capture"),
 	VOID("$void"),
-	REFUND("$refund");
+	REFUND("$refund"),
+	DEPOSIT("$deposit"),
+	WITHDRAWAL("$withdrawal"),
+	TRANSFER("$transfer");
 	
 	private String siftScienceValue;
 

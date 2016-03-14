@@ -81,7 +81,7 @@ public class RemoveItemFromCart extends Event {
 			return false;
 		}
 
-		if (obj == null || !(obj instanceof RemoveItemFromCart)) {
+		if (!(obj instanceof RemoveItemFromCart)) {
 			return false;
 		}
 		

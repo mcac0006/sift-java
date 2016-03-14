@@ -44,7 +44,7 @@ public class Logout extends Event {
 			return false;
 		}
 
-		if (obj == null || !(obj instanceof Logout)) {
+		if (!(obj instanceof Logout)) {
 			return false;
 		}
 		

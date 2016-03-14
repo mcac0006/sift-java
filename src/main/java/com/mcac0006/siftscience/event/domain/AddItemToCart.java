@@ -85,7 +85,7 @@ public class AddItemToCart extends Event {
 			return false;
 		}
 
-		if (obj == null || !(obj instanceof AddItemToCart)) {
+		if (!(obj instanceof AddItemToCart)) {
 			return false;
 		}
 		

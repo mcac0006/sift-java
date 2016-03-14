@@ -43,13 +43,13 @@ public class PaymentMethod {
 	 * Response code from the AVS address verification system. Used in payments involving credit cards.
 	 */
 	@JsonProperty("$avs_result_code")
-	private String AVSResultCode;
+	private String aVSResultCode;
 	
 	/**
 	 * Response code from the credit card company indicating if the CVV number entered matches the number on record. Used in payments involving credit cards.
 	 */
 	@JsonProperty("$cvv_result_code")
-	private String CVVResultCode;
+	private String cVVResultCode;
 	
 	/**
 	 * Use this to indicate the payment method has been verified.
@@ -80,11 +80,11 @@ public class PaymentMethod {
 	}
 
 	public String getAVSResultCode() {
-		return AVSResultCode;
+		return aVSResultCode;
 	}
 
 	public String getCVVResultCode() {
-		return CVVResultCode;
+		return cVVResultCode;
 	}
 
 	public VerificationStatus getVerificationStatus() {
@@ -116,12 +116,12 @@ public class PaymentMethod {
 	}
 
 	public PaymentMethod setAVSResultCode(String aVSResultCode) {
-		AVSResultCode = aVSResultCode;
+		this.aVSResultCode = aVSResultCode;
 		return this;
 	}
 
 	public PaymentMethod setCVVResultCode(String cVVResultCode) {
-		CVVResultCode = cVVResultCode;
+		this.cVVResultCode = cVVResultCode;
 		return this;
 	}
 
@@ -144,11 +144,11 @@ public class PaymentMethod {
 		
 		final PaymentMethod pm = (PaymentMethod)obj;
 		
-		if (this.AVSResultCode == null) {
+		if (this.aVSResultCode == null) {
 			if (pm.getAVSResultCode() != null) {
 				return false;
 			}
-		} else if (!this.AVSResultCode.equals(pm.getAVSResultCode())) {
+		} else if (!this.aVSResultCode.equals(pm.getAVSResultCode())) {
 			return false;
 		}
 		
@@ -168,11 +168,11 @@ public class PaymentMethod {
 			return false;
 		}
 		
-		if (this.CVVResultCode == null) {
+		if (this.cVVResultCode == null) {
 			if (pm.getCVVResultCode() != null) {
 				return false;
 			}
-		} else if (!this.CVVResultCode.equals(pm.getCVVResultCode())) {
+		} else if (!this.cVVResultCode.equals(pm.getCVVResultCode())) {
 			return false;
 		}
 		

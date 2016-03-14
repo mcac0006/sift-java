@@ -74,43 +74,57 @@ public class Login extends Event {
 		return this;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		
-		if (!super.equals(obj)) {
-			return false;
-		}
 
-		if (!(obj instanceof Login)) {
-			return false;
-		}
-		
-		final Login l = (Login)obj;
-		
-		if (this.loginStatus == null) {
-			if (l.getLoginStatus() != null) {
-				return false;
-			}
-		} else if (!this.loginStatus.equals(l.getLoginStatus())) {
-			return false;
-		}
-		
-		if (this.sessionId == null) {
-			if (l.getSessionId() != null) {
-				return false;
-			}
-		} else if (!this.sessionId.equals(l.getSessionId())) {
-			return false;
-		}
-		
-		if (this.userId == null) {
-			if (l.getUserId() != null) {
-				return false;
-			}
-		} else if (!this.userId.equals(l.getUserId())) {
-			return false;
-		}
-		
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result
+                + ((loginStatus == null) ? 0 : loginStatus.hashCode());
+        result = prime * result
+                + ((sessionId == null) ? 0 : sessionId.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        if (obj == null || !(obj instanceof Login)) {
+            return false;
+        }
+        
+        final Login l = (Login)obj;
+        
+        if (this.loginStatus == null) {
+            if (l.getLoginStatus() != null) {
+                return false;
+            }
+        } else if (!this.loginStatus.equals(l.getLoginStatus())) {
+            return false;
+        }
+        
+        if (this.sessionId == null) {
+            if (l.getSessionId() != null) {
+                return false;
+            }
+        } else if (!this.sessionId.equals(l.getSessionId())) {
+            return false;
+        }
+        
+        if (this.userId == null) {
+            if (l.getUserId() != null) {
+                return false;
+            }
+        } else if (!this.userId.equals(l.getUserId())) {
+            return false;
+        }
+        
+        return true;
+    }
+
 }

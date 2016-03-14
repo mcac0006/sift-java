@@ -50,37 +50,47 @@ public class LinkSessionToUser extends Event {
 		this.userId = userId;
 		return this;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		
-		if (!super.equals(obj)) {
-			return false;
-		}
 
-		if (!(obj instanceof LinkSessionToUser)) {
-			return false;
-		}
-		
-		final LinkSessionToUser lstu = (LinkSessionToUser)obj;
-		
-		if (this.sessionId == null) {
-			if (lstu.getSessionId() != null) {
-				return false;
-			}
-		} else if (!this.sessionId.equals(lstu.getSessionId())) {
-			return false;
-		}
-		
-		if (this.userId == null) {
-			if (lstu.getUserId() != null) {
-				return false;
-			}
-		} else if (!this.userId.equals(lstu.getUserId())) {
-			return false;
-		}
-		
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result
+                + ((sessionId == null) ? 0 : sessionId.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        if (obj == null || !(obj instanceof LinkSessionToUser)) {
+            return false;
+        }
+        
+        final LinkSessionToUser lstu = (LinkSessionToUser)obj;
+        
+        if (this.sessionId == null) {
+            if (lstu.getSessionId() != null) {
+                return false;
+            }
+        } else if (!this.sessionId.equals(lstu.getSessionId())) {
+            return false;
+        }
+        
+        if (this.userId == null) {
+            if (lstu.getUserId() != null) {
+                return false;
+            }
+        } else if (!this.userId.equals(lstu.getUserId())) {
+            return false;
+        }
+        
+        return true;
+    }
 
 }

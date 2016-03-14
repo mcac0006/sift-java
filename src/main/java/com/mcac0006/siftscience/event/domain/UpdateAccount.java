@@ -204,100 +204,124 @@ public class UpdateAccount extends Event {
 		return this;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		
-		if (!super.equals(obj)) {
-			return false;
-		}
 
-		if (obj == null || !(obj instanceof UpdateAccount)) {
-			return false;
-		}
-		
-		final UpdateAccount ua = (UpdateAccount)obj;
-		
-		if (this.billingAddress == null) {
-			if (ua.getBillingAddress() != null) {
-				return false;
-			}
-		} else if (!this.billingAddress.equals(ua.getBillingAddress())) {
-			return false;
-		}
-		
-		if (this.name == null) {
-			if (ua.getName() != null) {
-				return false;
-			}
-		} else if (!this.name.equals(ua.getName())) {
-			return false;
-		}
-		
-		if (this.paymentMethods == null) {
-			if (ua.getPaymentMethods() != null) {
-				return false;
-			}
-		} else if (!Arrays.equals(this.paymentMethods, ua.getPaymentMethods())) {
-			return false;
-		}
-		
-		if (this.phone == null) {
-			if (ua.getPhone() != null) {
-				return false;
-			}
-		} else if (!this.phone.equals(ua.getPhone())) {
-			return false;
-		}
-		
-		if (this.referrerUserId == null) {
-			if (ua.getReferrerUserId() != null) {
-				return false;
-			}
-		} else if (!this.referrerUserId.equals(ua.getReferrerUserId())) {
-			return false;
-		}
-		
-		if (this.socialSignOnType == null) {
-			if (ua.getSocialSignOnType() != null) {
-				return false;
-			}
-		} else if (!this.socialSignOnType.equals(ua.getSocialSignOnType())) {
-			return false;
-		}
-		
-		if (this.userEmail == null) {
-			if (ua.getUserEmail() != null) {
-				return false;
-			}
-		} else if (!this.userEmail.equals(ua.getUserEmail())) {
-			return false;
-		}
-		
-		if (this.userId == null) {
-			if (ua.getUserId() != null) {
-				return false;
-			}
-		} else if (!this.userId.equals(ua.getUserId())) {
-			return false;
-		}
-		
-		if (this.changedPassword == null) {
-			if (ua.getChangedPassword() != null) {
-				return false;
-			}
-		} else if (!this.changedPassword.equals(ua.getChangedPassword())) {
-			return false;
-		}
-		
-		if (this.socialSignOnType == null) {
-			if (ua.getSocialSignOnType() != null) {
-				return false;
-			}
-		} else if (!this.socialSignOnType.equals(ua.getSocialSignOnType())) {
-			return false;
-		}
-		
-		return true;
-		
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result
+                + ((billingAddress == null) ? 0 : billingAddress.hashCode());
+        result = prime * result
+                + ((changedPassword == null) ? 0 : changedPassword.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + Arrays.hashCode(paymentMethods);
+        result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+        result = prime * result
+                + ((referrerUserId == null) ? 0 : referrerUserId.hashCode());
+        result = prime
+                * result
+                + ((socialSignOnType == null) ? 0 : socialSignOnType.hashCode());
+        result = prime * result
+                + ((userEmail == null) ? 0 : userEmail.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        if (obj == null || !(obj instanceof UpdateAccount)) {
+            return false;
+        }
+        
+        final UpdateAccount ua = (UpdateAccount)obj;
+        
+        if (this.billingAddress == null) {
+            if (ua.getBillingAddress() != null) {
+                return false;
+            }
+        } else if (!this.billingAddress.equals(ua.getBillingAddress())) {
+            return false;
+        }
+        
+        if (this.name == null) {
+            if (ua.getName() != null) {
+                return false;
+            }
+        } else if (!this.name.equals(ua.getName())) {
+            return false;
+        }
+        
+        if (this.paymentMethods == null) {
+            if (ua.getPaymentMethods() != null) {
+                return false;
+            }
+        } else if (!Arrays.equals(this.paymentMethods, ua.getPaymentMethods())) {
+            return false;
+        }
+        
+        if (this.phone == null) {
+            if (ua.getPhone() != null) {
+                return false;
+            }
+        } else if (!this.phone.equals(ua.getPhone())) {
+            return false;
+        }
+        
+        if (this.referrerUserId == null) {
+            if (ua.getReferrerUserId() != null) {
+                return false;
+            }
+        } else if (!this.referrerUserId.equals(ua.getReferrerUserId())) {
+            return false;
+        }
+        
+        if (this.socialSignOnType == null) {
+            if (ua.getSocialSignOnType() != null) {
+                return false;
+            }
+        } else if (!this.socialSignOnType.equals(ua.getSocialSignOnType())) {
+            return false;
+        }
+        
+        if (this.userEmail == null) {
+            if (ua.getUserEmail() != null) {
+                return false;
+            }
+        } else if (!this.userEmail.equals(ua.getUserEmail())) {
+            return false;
+        }
+        
+        if (this.userId == null) {
+            if (ua.getUserId() != null) {
+                return false;
+            }
+        } else if (!this.userId.equals(ua.getUserId())) {
+            return false;
+        }
+        
+        if (this.changedPassword == null) {
+            if (ua.getChangedPassword() != null) {
+                return false;
+            }
+        } else if (!this.changedPassword.equals(ua.getChangedPassword())) {
+            return false;
+        }
+        
+        if (this.socialSignOnType == null) {
+            if (ua.getSocialSignOnType() != null) {
+                return false;
+            }
+        } else if (!this.socialSignOnType.equals(ua.getSocialSignOnType())) {
+            return false;
+        }
+        
+        return true;
+        
+    }
+
 }

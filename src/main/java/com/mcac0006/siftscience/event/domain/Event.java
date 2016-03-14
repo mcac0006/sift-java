@@ -117,47 +117,61 @@ public abstract class Event {
 		this.time = time;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((apiKey == null) ? 0 : apiKey.hashCode());
+        result = prime * result
+                + ((customFields == null) ? 0 : customFields.hashCode());
+        result = prime * result
+                + ((eventType == null) ? 0 : eventType.hashCode());
+        result = prime * result + ((time == null) ? 0 : time.hashCode());
+        return result;
+    }
 
-		if (obj == null || !(obj instanceof Event)) {
-			return false;
-		}
-		
-		final Event e = (Event)obj;
-		
-		if (this.apiKey == null) {
-			if (e.getApiKey() != null) {
-				return false;
-			}
-		} else if (!this.apiKey.equals(e.getApiKey())) {
-			return false;
-		}
-		
-		if (this.eventType == null) {
-			if (e.getEventType() != null) {
-				return false;
-			}
-		} else if (!this.eventType.equals(e.getEventType())) {
-			return false;
-		}
-		
-		if (this.customFields == null) {
-			if (e.getCustomFields() != null) {
-				return false;
-			}
-		} else if (!this.customFields.equals(e.getCustomFields())) {
-			return false;
-		}
-		
-		if (this.time == null) {
-			if (e.getTime() != null) {
-				return false;
-			}
-		} else if (!this.time.equals(e.getTime())) {
-			return false;
-		}
-		
-		return true;
-	}
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == null || !(obj instanceof Event)) {
+            return false;
+        }
+        
+        final Event e = (Event)obj;
+        
+        if (this.apiKey == null) {
+            if (e.getApiKey() != null) {
+                return false;
+            }
+        } else if (!this.apiKey.equals(e.getApiKey())) {
+            return false;
+        }
+        
+        if (this.eventType == null) {
+            if (e.getEventType() != null) {
+                return false;
+            }
+        } else if (!this.eventType.equals(e.getEventType())) {
+            return false;
+        }
+        
+        if (this.customFields == null) {
+            if (e.getCustomFields() != null) {
+                return false;
+            }
+        } else if (!this.customFields.equals(e.getCustomFields())) {
+            return false;
+        }
+        
+        if (this.time == null) {
+            if (e.getTime() != null) {
+                return false;
+            }
+        } else if (!this.time.equals(e.getTime())) {
+            return false;
+        }
+        
+        return true;
+    }
+	
 }

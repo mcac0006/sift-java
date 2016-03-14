@@ -134,80 +134,96 @@ public class PaymentMethod {
 		this.routingNumber = routingNumber;
 		return this;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
 
-		if (obj == null || !(obj instanceof PaymentMethod)) {
-			return false;
-		}
-		
-		final PaymentMethod pm = (PaymentMethod)obj;
-		
-		if (this.aVSResultCode == null) {
-			if (pm.getAVSResultCode() != null) {
-				return false;
-			}
-		} else if (!this.aVSResultCode.equals(pm.getAVSResultCode())) {
-			return false;
-		}
-		
-		if (this.cardBIN == null) {
-			if (pm.getCardBIN() != null) {
-				return false;
-			}
-		} else if (!this.cardBIN.equals(pm.getCardBIN())) {
-			return false;
-		}
-		
-		if (this.cardLast4 == null) {
-			if (pm.getCardLast4() != null) {
-				return false;
-			}
-		} else if (!this.cardLast4.equals(pm.getCardLast4())) {
-			return false;
-		}
-		
-		if (this.cVVResultCode == null) {
-			if (pm.getCVVResultCode() != null) {
-				return false;
-			}
-		} else if (!this.cVVResultCode.equals(pm.getCVVResultCode())) {
-			return false;
-		}
-		
-		if (this.paymentGateway == null) {
-			if (pm.getPaymentGateway() != null) {
-				return false;
-			}
-		} else if (!this.paymentGateway.equals(pm.getPaymentGateway())) {
-			return false;
-		}
-		
-		if (this.paymentType == null) {
-			if (pm.getPaymentType() != null) {
-				return false;
-			}
-		} else if (!this.paymentType.equals(pm.getPaymentType())) {
-			return false;
-		}
-		
-		if (this.routingNumber == null) {
-			if (pm.getRoutingNumber() != null) {
-				return false;
-			}
-		} else if (!this.routingNumber.equals(pm.getRoutingNumber())) {
-			return false;
-		}
-		
-		if (this.verificationStatus == null) {
-			if (pm.getVerificationStatus() != null) {
-				return false;
-			}
-		} else if (!this.verificationStatus.equals(pm.getVerificationStatus())) {
-			return false;
-		}
-		
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((aVSResultCode == null) ? 0 : aVSResultCode.hashCode());
+        result = prime * result + ((cVVResultCode == null) ? 0 : cVVResultCode.hashCode());
+        result = prime * result + ((cardBIN == null) ? 0 : cardBIN.hashCode());
+        result = prime * result + ((cardLast4 == null) ? 0 : cardLast4.hashCode());
+        result = prime * result + ((paymentGateway == null) ? 0 : paymentGateway.hashCode());
+        result = prime * result + ((paymentType == null) ? 0 : paymentType.hashCode());
+        result = prime * result + ((routingNumber == null) ? 0 : routingNumber.hashCode());
+        result = prime * result + ((verificationStatus == null) ? 0 : verificationStatus.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == null || !(obj instanceof PaymentMethod)) {
+            return false;
+        }
+        
+        final PaymentMethod pm = (PaymentMethod)obj;
+        
+        if (this.aVSResultCode == null) {
+            if (pm.getAVSResultCode() != null) {
+                return false;
+            }
+        } else if (!this.aVSResultCode.equals(pm.getAVSResultCode())) {
+            return false;
+        }
+        
+        if (this.cardBIN == null) {
+            if (pm.getCardBIN() != null) {
+                return false;
+            }
+        } else if (!this.cardBIN.equals(pm.getCardBIN())) {
+            return false;
+        }
+        
+        if (this.cardLast4 == null) {
+            if (pm.getCardLast4() != null) {
+                return false;
+            }
+        } else if (!this.cardLast4.equals(pm.getCardLast4())) {
+            return false;
+        }
+        
+        if (this.cVVResultCode == null) {
+            if (pm.getCVVResultCode() != null) {
+                return false;
+            }
+        } else if (!this.cVVResultCode.equals(pm.getCVVResultCode())) {
+            return false;
+        }
+        
+        if (this.paymentGateway == null) {
+            if (pm.getPaymentGateway() != null) {
+                return false;
+            }
+        } else if (!this.paymentGateway.equals(pm.getPaymentGateway())) {
+            return false;
+        }
+        
+        if (this.paymentType == null) {
+            if (pm.getPaymentType() != null) {
+                return false;
+            }
+        } else if (!this.paymentType.equals(pm.getPaymentType())) {
+            return false;
+        }
+        
+        if (this.routingNumber == null) {
+            if (pm.getRoutingNumber() != null) {
+                return false;
+            }
+        } else if (!this.routingNumber.equals(pm.getRoutingNumber())) {
+            return false;
+        }
+        
+        if (this.verificationStatus == null) {
+            if (pm.getVerificationStatus() != null) {
+                return false;
+            }
+        } else if (!this.verificationStatus.equals(pm.getVerificationStatus())) {
+            return false;
+        }
+        
+        return true;
+    }
+	
 }

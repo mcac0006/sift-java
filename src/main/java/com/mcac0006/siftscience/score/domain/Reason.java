@@ -74,32 +74,43 @@ public class Reason {
 	public final void setValue(String value) {
 		this.value = value;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
 
-		if (obj == null || !(obj instanceof Reason)) {
-			return false;
-		}
-		
-		final Reason e = (Reason)obj;
-		
-		if (this.name == null) {
-			if (e.getName() != null) {
-				return false;
-			}
-		} else if (!this.name.equals(e.getName())) {
-			return false;
-		}
-		
-		if (this.details == null) {
-			if (e.getDetails() != null) {
-				return false;
-			}
-		} else if (!this.details.equals(e.getDetails())) {
-			return false;
-		}
-		
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((details == null) ? 0 : details.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((value == null) ? 0 : value.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == null || !(obj instanceof Reason)) {
+            return false;
+        }
+        
+        final Reason e = (Reason)obj;
+        
+        if (this.name == null) {
+            if (e.getName() != null) {
+                return false;
+            }
+        } else if (!this.name.equals(e.getName())) {
+            return false;
+        }
+        
+        if (this.details == null) {
+            if (e.getDetails() != null) {
+                return false;
+            }
+        } else if (!this.details.equals(e.getDetails())) {
+            return false;
+        }
+        
+        return true;
+    }
+	
 }

@@ -36,29 +36,38 @@ public class Logout extends Event {
 		this.userId = userId;
 		return this;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		
-		if (!super.equals(obj)) {
-			return false;
-		}
 
-		if (!(obj instanceof Logout)) {
-			return false;
-		}
-		
-		final Logout l = (Logout)obj;
-		
-		if (this.userId == null) {
-			if (l.getUserId() != null) {
-				return false;
-			}
-		} else if (!this.userId.equals(l.getUserId())) {
-			return false;
-		}
-		
-		return true;
-	}
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        if (obj == null || !(obj instanceof Logout)) {
+            return false;
+        }
+        
+        final Logout l = (Logout)obj;
+        
+        if (this.userId == null) {
+            if (l.getUserId() != null) {
+                return false;
+            }
+        } else if (!this.userId.equals(l.getUserId())) {
+            return false;
+        }
+        
+        return true;
+    }
 
 }

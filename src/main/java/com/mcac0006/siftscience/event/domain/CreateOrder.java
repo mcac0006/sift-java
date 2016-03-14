@@ -234,116 +234,145 @@ public class CreateOrder extends Event {
 	public String getSellerUserId() {
 		return sellerUserId;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		
-		if (!super.equals(obj)) {
-			return false;
-		}
 
-		if (obj == null || !(obj instanceof CreateOrder)) {
-			return false;
-		}
-		
-		final CreateOrder co = (CreateOrder)obj;
-		
-		if (this.expeditedShipping == null) {
-			if (co.getExpeditedShipping() != null) {
-				return false;
-			}
-		} else if (!this.expeditedShipping.equals(co.getExpeditedShipping())) {
-			return false;
-		}
-		
-		if (this.amount == null) {
-			if (co.getAmount() != null) {
-				return false;
-			}
-		} else if (!this.amount.equals(co.getAmount())) {
-			return false;
-		}
-		
-		if (this.billingAddress == null) {
-			if (co.getBillingAddress() != null) {
-				return false;
-			}
-		} else if (!this.billingAddress.equals(co.getBillingAddress())) {
-			return false;
-		}
-		
-		if (this.currencyCode == null) {
-			if (co.getCurrencyCode() != null) {
-				return false;
-			}
-		} else if (!this.currencyCode.equals(co.getCurrencyCode())) {
-			return false;
-		}
-		
-		if (this.items == null) {
-			if (co.getItems() != null) {
-				return false;
-			}
-		} else if (!Arrays.equals(this.items, co.getItems())) {
-			return false;
-		}
-		
-		if (this.orderId == null) {
-			if (co.getOrderId() != null) {
-				return false;
-			}
-		} else if (!this.orderId.equals(co.getOrderId())) {
-			return false;
-		}
-		
-		if (this.paymentMethods == null) {
-			if (co.getPaymentMethods() != null) {
-				return false;
-			}
-		} else if (!Arrays.equals(this.paymentMethods, co.getPaymentMethods())) {
-			return false;
-		}
-		
-		if (this.sellerUserId == null) {
-			if (co.getSellerUserId() != null) {
-				return false;
-			}
-		} else if (!this.sellerUserId.equals(co.getSellerUserId())) {
-			return false;
-		}
-		
-		if (this.sessionId == null) {
-			if (co.getSessionId() != null) {
-				return false;
-			}
-		} else if (!this.sessionId.equals(co.getSessionId())) {
-			return false;
-		}
-		
-		if (this.shippingAddress == null) {
-			if (co.getShippingAddress() != null) {
-				return false;
-			}
-		} else if (!this.shippingAddress.equals(co.getShippingAddress())) {
-			return false;
-		}
-		
-		if (this.userEmail == null) {
-			if (co.getUserEmail() != null) {
-				return false;
-			}
-		} else if (!this.userEmail.equals(co.getUserEmail())) {
-			return false;
-		}
-		
-		if (this.userId == null) {
-			if (co.getUserId() != null) {
-				return false;
-			}
-		} else if (!this.userId.equals(co.getUserId())) {
-			return false;
-		}
-		
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((amount == null) ? 0 : amount.hashCode());
+        result = prime * result
+                + ((billingAddress == null) ? 0 : billingAddress.hashCode());
+        result = prime * result
+                + ((currencyCode == null) ? 0 : currencyCode.hashCode());
+        result = prime
+                * result
+                + ((expeditedShipping == null) ? 0 : expeditedShipping
+                        .hashCode());
+        result = prime * result + Arrays.hashCode(items);
+        result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+        result = prime * result + Arrays.hashCode(paymentMethods);
+        result = prime * result
+                + ((sellerUserId == null) ? 0 : sellerUserId.hashCode());
+        result = prime * result
+                + ((sessionId == null) ? 0 : sessionId.hashCode());
+        result = prime * result
+                + ((shippingAddress == null) ? 0 : shippingAddress.hashCode());
+        result = prime * result
+                + ((userEmail == null) ? 0 : userEmail.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        if (obj == null || !(obj instanceof CreateOrder)) {
+            return false;
+        }
+        
+        final CreateOrder co = (CreateOrder)obj;
+        
+        if (this.expeditedShipping == null) {
+            if (co.getExpeditedShipping() != null) {
+                return false;
+            }
+        } else if (!this.expeditedShipping.equals(co.getExpeditedShipping())) {
+            return false;
+        }
+        
+        if (this.amount == null) {
+            if (co.getAmount() != null) {
+                return false;
+            }
+        } else if (!this.amount.equals(co.getAmount())) {
+            return false;
+        }
+        
+        if (this.billingAddress == null) {
+            if (co.getBillingAddress() != null) {
+                return false;
+            }
+        } else if (!this.billingAddress.equals(co.getBillingAddress())) {
+            return false;
+        }
+        
+        if (this.currencyCode == null) {
+            if (co.getCurrencyCode() != null) {
+                return false;
+            }
+        } else if (!this.currencyCode.equals(co.getCurrencyCode())) {
+            return false;
+        }
+        
+        if (this.items == null) {
+            if (co.getItems() != null) {
+                return false;
+            }
+        } else if (!Arrays.equals(this.items, co.getItems())) {
+            return false;
+        }
+        
+        if (this.orderId == null) {
+            if (co.getOrderId() != null) {
+                return false;
+            }
+        } else if (!this.orderId.equals(co.getOrderId())) {
+            return false;
+        }
+        
+        if (this.paymentMethods == null) {
+            if (co.getPaymentMethods() != null) {
+                return false;
+            }
+        } else if (!Arrays.equals(this.paymentMethods, co.getPaymentMethods())) {
+            return false;
+        }
+        
+        if (this.sellerUserId == null) {
+            if (co.getSellerUserId() != null) {
+                return false;
+            }
+        } else if (!this.sellerUserId.equals(co.getSellerUserId())) {
+            return false;
+        }
+        
+        if (this.sessionId == null) {
+            if (co.getSessionId() != null) {
+                return false;
+            }
+        } else if (!this.sessionId.equals(co.getSessionId())) {
+            return false;
+        }
+        
+        if (this.shippingAddress == null) {
+            if (co.getShippingAddress() != null) {
+                return false;
+            }
+        } else if (!this.shippingAddress.equals(co.getShippingAddress())) {
+            return false;
+        }
+        
+        if (this.userEmail == null) {
+            if (co.getUserEmail() != null) {
+                return false;
+            }
+        } else if (!this.userEmail.equals(co.getUserEmail())) {
+            return false;
+        }
+        
+        if (this.userId == null) {
+            if (co.getUserId() != null) {
+                return false;
+            }
+        } else if (!this.userId.equals(co.getUserId())) {
+            return false;
+        }
+        
+        return true;
+    }
+	
 }

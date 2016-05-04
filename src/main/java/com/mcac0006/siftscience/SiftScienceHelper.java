@@ -57,8 +57,7 @@ public class SiftScienceHelper {
 			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
 			final Response post = request.post(Entity.entity(serialize(event), MediaType.APPLICATION_JSON_TYPE));
 			
-			final SiftScienceResponse siftResult = deserializeResponse(post.readEntity(String.class));
-			return siftResult;
+			return deserializeResponse(post.readEntity(String.class));
 			
 		} catch (IOException e) {
 			throw new SiftScienceException("Error generating JSON content to send event.", e);
@@ -81,8 +80,7 @@ public class SiftScienceHelper {
 			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
 			final Response post = request.post(Entity.entity(serialize(label), MediaType.APPLICATION_JSON_TYPE));
 			
-			final SiftScienceResponse siftResult = deserializeResponse(post.readEntity(String.class));
-			return siftResult;
+			return deserializeResponse(post.readEntity(String.class));
 			
 		} catch (IOException e) {
 			throw new SiftScienceException("Error generating JSON content to send label.", e);
@@ -110,8 +108,7 @@ public class SiftScienceHelper {
 			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
 			final Response get = request.get();
 			
-			final SiftScienceScore score = deserializeScore(get.readEntity(String.class));
-			return score;
+			return deserializeScore(get.readEntity(String.class));
 			
 		} catch (IOException e) {
 			throw new RuntimeException("Error generating JSON content to retrieve score request.", e);

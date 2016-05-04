@@ -91,7 +91,7 @@ public class SiftScienceHelper {
 	 * Retrieve a risk assessment of a particular user. This is particularly useful to consult with Sift Science 
 	 * before you proceed with any (user-invoked or system-invoked) operations (such as a purchase) on that user.
 	 * 
-	 * @param api_key - the api key to denote which Sift Science account to use.
+	 * @param apiKey - the api key to denote which Sift Science account to use.
 	 * @param userId - the user would you like to run a risk assessment on.
 	 * 
 	 * @return a Sift Science score wrapped in a {@link SiftScienceScore} instance containing information such as the 
@@ -99,12 +99,12 @@ public class SiftScienceHelper {
 	 *         
 	 *         Refer to the class' JavaDocs for more information.
 	 */
-	public static SiftScienceScore getScore(final String api_key, final String userId) {
+	public static SiftScienceScore getScore(final String apiKey, final String userId) {
 		
 		try {
 			
 			final Client client = ClientBuilder.newClient();
-			final WebTarget target = client.target("https://api.siftscience.com/v203/score/").path(userId).queryParam("api_key", api_key);
+			final WebTarget target = client.target("https://api.siftscience.com/v203/score/").path(userId).queryParam("api_key", apiKey);
 			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
 			final Response get = request.get();
 			
@@ -137,12 +137,12 @@ public class SiftScienceHelper {
 	/**
 	 * <p>Deserializes a response after sending an {@link Event} or a {@link Label}.
 	 * 
-	 * @param $response the JSON envelope withholding Sift Science's response.
+	 * @param response the JSON envelope withholding Sift Science's response.
 	 * @return the response in POJO.
 	 * @throws IOException thrown whenever an error (unexpected or user-inflicted) has been found during deserialization of the event or label.
 	 */
-	public static SiftScienceResponse deserializeResponse(final String $response) throws IOException {
-		return mapper.readValue($response, SiftScienceResponse.class);
+	public static SiftScienceResponse deserializeResponse(final String response) throws IOException {
+		return mapper.readValue(response, SiftScienceResponse.class);
 	}
 	
 	/**
@@ -151,11 +151,11 @@ public class SiftScienceHelper {
 	 * <p><strong>Useful if you have your own way of sending and receiving requests.</strong> Should you require a way of 
 	 * receiving the score Http, you can make use of {@link SiftScienceHelper#getScore(String, String)}.</p>
 	 * 
-	 * @param $scoreResponse the JSON envelope withholding Sift Science's response.
+	 * @param scoreResponse the JSON envelope withholding Sift Science's response.
 	 * @return the response in POJO.
 	 * @throws IOException thrown whenever an error (unexpected or user-inflicted) has been found during deserialization of the score.
 	 */
-	public static SiftScienceScore deserializeScore(final String $scoreResponse) throws IOException {
-		return mapper.readValue($scoreResponse, SiftScienceScore.class);
+	public static SiftScienceScore deserializeScore(final String scoreResponse) throws IOException {
+		return mapper.readValue(scoreResponse, SiftScienceScore.class);
 	}
 }

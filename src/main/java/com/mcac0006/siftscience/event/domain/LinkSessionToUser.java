@@ -58,7 +58,7 @@ public class LinkSessionToUser extends Event {
 			return false;
 		}
 
-		if (obj == null || !(obj instanceof LinkSessionToUser)) {
+		if (!(obj instanceof LinkSessionToUser)) {
 			return false;
 		}
 		

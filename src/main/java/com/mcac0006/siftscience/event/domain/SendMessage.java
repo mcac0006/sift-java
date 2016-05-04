@@ -112,7 +112,7 @@ public class SendMessage extends Event {
 			return false;
 		}
 
-		if (obj == null || !(obj instanceof SendMessage)) {
+		if (!(obj instanceof SendMessage)) {
 			return false;
 		}
 		

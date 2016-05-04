@@ -81,7 +81,7 @@ public class Login extends Event {
 			return false;
 		}
 
-		if (obj == null || !(obj instanceof Login)) {
+		if (!(obj instanceof Login)) {
 			return false;
 		}
 		

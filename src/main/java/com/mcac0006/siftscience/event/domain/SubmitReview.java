@@ -137,7 +137,7 @@ public class SubmitReview extends Event {
 			return false;
 		}
 
-		if (obj == null || !(obj instanceof SubmitReview)) {
+		if (!(obj instanceof SubmitReview)) {
 			return false;
 		}
 		

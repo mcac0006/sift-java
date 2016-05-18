@@ -225,128 +225,155 @@ public class Item {
 		this.size = size;
 		return this;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
 
-		if (obj == null || !(obj instanceof Item)) {
-			return false;
-		}
-		
-		final Item item = (Item)obj;
-		
-		if (this.brand == null) {
-			if (item.getBrand() != null) {
-				return false;
-			}
-		} else if (!this.brand.equals(item.getBrand())) {
-			return false;
-		}
-		
-		if (this.category == null) {
-			if (item.getCategory() != null) {
-				return false;
-			}
-		} else if (!this.category.equals(item.getCategory())) {
-			return false;
-		}
-		
-		if (this.color == null) {
-			if (item.getColor() != null) {
-				return false;
-			}
-		} else if (!this.color.equals(item.getColor())) {
-			return false;
-		}
-		
-		if (this.currency == null) {
-			if (item.getCurrency() != null) {
-				return false;
-			}
-		} else if (!this.currency.equals(item.getCurrency())) {
-			return false;
-		}
-		
-		if (this.isbn == null) {
-			if (item.getIsbn() != null) {
-				return false;
-			}
-		} else if (!this.isbn.equals(item.getIsbn())) {
-			return false;
-		}
-		
-		if (this.itemId == null) {
-			if (item.getItemId() != null) {
-				return false;
-			}
-		} else if (!this.itemId.equals(item.getItemId())) {
-			return false;
-		}
-		
-		if (this.manufacturer == null) {
-			if (item.getManufacturer() != null) {
-				return false;
-			}
-		} else if (!this.manufacturer.equals(item.getManufacturer())) {
-			return false;
-		}
-		
-		if (this.price == null) {
-			if (item.getPrice() != null) {
-				return false;
-			}
-		} else if (!this.price.equals(item.getPrice())) {
-			return false;
-		}
-		
-		if (this.productTitle == null) {
-			if (item.getProductTitle() != null) {
-				return false;
-			}
-		} else if (!this.productTitle.equals(item.getProductTitle())) {
-			return false;
-		}
-		
-		if (this.quantity == null) {
-			if (item.getQuantity() != null) {
-				return false;
-			}
-		} else if (!this.quantity.equals(item.getQuantity())) {
-			return false;
-		}
-		
-		if (this.size == null) {
-			if (item.getSize() != null) {
-				return false;
-			}
-		} else if (!this.size.equals(item.getSize())) {
-			return false;
-		}
-		
-		if (this.sku == null) {
-			if (item.getSku() != null) {
-				return false;
-			}
-		} else if (!this.sku.equals(item.getSku())) {
-			return false;
-		}
-		
-		if (this.tags == null) {
-			if (item.getTags() != null) {
-				return false;
-			}
-		} else if (!Arrays.equals(tags, item.getTags())) {
-			return false;
-		}
-		
-		if (this.upc == null) {
-			if (item.getUpc() != null) {
-				return false;
-			}
-		} else if (!this.upc.equals(item.getUpc())) {
-			return false;
-		}
-		
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((brand == null) ? 0 : brand.hashCode());
+        result = prime * result
+                + ((category == null) ? 0 : category.hashCode());
+        result = prime * result + ((color == null) ? 0 : color.hashCode());
+        result = prime * result
+                + ((currency == null) ? 0 : currency.hashCode());
+        result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
+        result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
+        result = prime * result
+                + ((manufacturer == null) ? 0 : manufacturer.hashCode());
+        result = prime * result + ((price == null) ? 0 : price.hashCode());
+        result = prime * result
+                + ((productTitle == null) ? 0 : productTitle.hashCode());
+        result = prime * result
+                + ((quantity == null) ? 0 : quantity.hashCode());
+        result = prime * result + ((size == null) ? 0 : size.hashCode());
+        result = prime * result + ((sku == null) ? 0 : sku.hashCode());
+        result = prime * result + Arrays.hashCode(tags);
+        result = prime * result + ((upc == null) ? 0 : upc.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == null || !(obj instanceof Item)) {
+            return false;
+        }
+        
+        final Item item = (Item)obj;
+        
+        if (this.brand == null) {
+            if (item.getBrand() != null) {
+                return false;
+            }
+        } else if (!this.brand.equals(item.getBrand())) {
+            return false;
+        }
+        
+        if (this.category == null) {
+            if (item.getCategory() != null) {
+                return false;
+            }
+        } else if (!this.category.equals(item.getCategory())) {
+            return false;
+        }
+        
+        if (this.color == null) {
+            if (item.getColor() != null) {
+                return false;
+            }
+        } else if (!this.color.equals(item.getColor())) {
+            return false;
+        }
+        
+        if (this.currency == null) {
+            if (item.getCurrency() != null) {
+                return false;
+            }
+        } else if (!this.currency.equals(item.getCurrency())) {
+            return false;
+        }
+        
+        if (this.isbn == null) {
+            if (item.getIsbn() != null) {
+                return false;
+            }
+        } else if (!this.isbn.equals(item.getIsbn())) {
+            return false;
+        }
+        
+        if (this.itemId == null) {
+            if (item.getItemId() != null) {
+                return false;
+            }
+        } else if (!this.itemId.equals(item.getItemId())) {
+            return false;
+        }
+        
+        if (this.manufacturer == null) {
+            if (item.getManufacturer() != null) {
+                return false;
+            }
+        } else if (!this.manufacturer.equals(item.getManufacturer())) {
+            return false;
+        }
+        
+        if (this.price == null) {
+            if (item.getPrice() != null) {
+                return false;
+            }
+        } else if (!this.price.equals(item.getPrice())) {
+            return false;
+        }
+        
+        if (this.productTitle == null) {
+            if (item.getProductTitle() != null) {
+                return false;
+            }
+        } else if (!this.productTitle.equals(item.getProductTitle())) {
+            return false;
+        }
+        
+        if (this.quantity == null) {
+            if (item.getQuantity() != null) {
+                return false;
+            }
+        } else if (!this.quantity.equals(item.getQuantity())) {
+            return false;
+        }
+        
+        if (this.size == null) {
+            if (item.getSize() != null) {
+                return false;
+            }
+        } else if (!this.size.equals(item.getSize())) {
+            return false;
+        }
+        
+        if (this.sku == null) {
+            if (item.getSku() != null) {
+                return false;
+            }
+        } else if (!this.sku.equals(item.getSku())) {
+            return false;
+        }
+        
+        if (this.tags == null) {
+            if (item.getTags() != null) {
+                return false;
+            }
+        } else if (!Arrays.equals(tags, item.getTags())) {
+            return false;
+        }
+        
+        if (this.upc == null) {
+            if (item.getUpc() != null) {
+                return false;
+            }
+        } else if (!this.upc.equals(item.getUpc())) {
+            return false;
+        }
+        
+        return true;
+    }
+	
 }

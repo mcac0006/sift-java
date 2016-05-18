@@ -232,125 +232,157 @@ public class Transaction extends Event {
 		this.sellerUserId = sellerUserId;
 		return this;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		
-		if (!super.equals(obj)) {
-			return false;
-		}
 
-		if (obj == null || !(obj instanceof Transaction)) {
-			return false;
-		}
-		
-		final Transaction tx = (Transaction)obj;
-		
-		if (this.amount == null) {
-			if (tx.getAmount() != null) {
-				return false;
-			}
-		} else if (!this.amount.equals(tx.getAmount())) {
-			return false;
-		}
-		
-		if (this.billingAddress == null) {
-			if (tx.getBillingAddress() != null) {
-				return false;
-			}
-		} else if (!this.billingAddress.equals(tx.getBillingAddress())) {
-			return false;
-		}
-		
-		if (this.currencyCode == null) {
-			if (tx.getCurrencyCode() != null) {
-				return false;
-			}
-		} else if (!this.currencyCode.equals(tx.getCurrencyCode())) {
-			return false;
-		}
-		
-		if (this.orderId == null) {
-			if (tx.getOrderId() != null) {
-				return false;
-			}
-		} else if (!this.orderId.equals(tx.getOrderId())) {
-			return false;
-		}
-		
-		if (this.paymentMethod == null) {
-			if (tx.getPaymentMethod() != null) {
-				return false;
-			}
-		} else if (!this.paymentMethod.equals(tx.getPaymentMethod())) {
-			return false;
-		}
-		
-		if (this.sellerUserId == null) {
-			if (tx.getSellerUserId() != null) {
-				return false;
-			}
-		} else if (!this.sellerUserId.equals(tx.getSellerUserId())) {
-			return false;
-		}
-		
-		if (this.sessionId == null) {
-			if (tx.getSessionId() != null) {
-				return false;
-			}
-		} else if (!this.sessionId.equals(tx.getSessionId())) {
-			return false;
-		}
-		
-		if (this.shippingAddress == null) {
-			if (tx.getShippingAddress() != null) {
-				return false;
-			}
-		} else if (!this.shippingAddress.equals(tx.getShippingAddress())) {
-			return false;
-		}
-		
-		if (this.transactionId == null) {
-			if (tx.getTransactionId() != null) {
-				return false;
-			}
-		} else if (!this.transactionId.equals(tx.getTransactionId())) {
-			return false;
-		}
-		
-		if (this.transactionStatus == null) {
-			if (tx.getTransactionStatus() != null) {
-				return false;
-			}
-		} else if (!this.transactionStatus.equals(tx.getTransactionStatus())) {
-			return false;
-		}
-		
-		if (this.transactionType == null) {
-			if (tx.getTransactionType() != null) {
-				return false;
-			}
-		} else if (!this.transactionType.equals(tx.getTransactionType())) {
-			return false;
-		}
-		
-		if (this.userEmail == null) {
-			if (tx.getUserEmail() != null) {
-				return false;
-			}
-		} else if (!this.userEmail.equals(tx.getUserEmail())) {
-			return false;
-		}
-		
-		if (this.userId == null) {
-			if (tx.getUserId() != null) {
-				return false;
-			}
-		} else if (!this.userId.equals(tx.getUserId())) {
-			return false;
-		}
-		
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((amount == null) ? 0 : amount.hashCode());
+        result = prime * result
+                + ((billingAddress == null) ? 0 : billingAddress.hashCode());
+        result = prime * result
+                + ((currencyCode == null) ? 0 : currencyCode.hashCode());
+        result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+        result = prime * result
+                + ((paymentMethod == null) ? 0 : paymentMethod.hashCode());
+        result = prime * result
+                + ((sellerUserId == null) ? 0 : sellerUserId.hashCode());
+        result = prime * result
+                + ((sessionId == null) ? 0 : sessionId.hashCode());
+        result = prime * result
+                + ((shippingAddress == null) ? 0 : shippingAddress.hashCode());
+        result = prime * result
+                + ((transactionId == null) ? 0 : transactionId.hashCode());
+        result = prime
+                * result
+                + ((transactionStatus == null) ? 0 : transactionStatus
+                        .hashCode());
+        result = prime * result
+                + ((transactionType == null) ? 0 : transactionType.hashCode());
+        result = prime * result
+                + ((userEmail == null) ? 0 : userEmail.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        if (obj == null || !(obj instanceof Transaction)) {
+            return false;
+        }
+        
+        final Transaction tx = (Transaction)obj;
+        
+        if (this.amount == null) {
+            if (tx.getAmount() != null) {
+                return false;
+            }
+        } else if (!this.amount.equals(tx.getAmount())) {
+            return false;
+        }
+        
+        if (this.billingAddress == null) {
+            if (tx.getBillingAddress() != null) {
+                return false;
+            }
+        } else if (!this.billingAddress.equals(tx.getBillingAddress())) {
+            return false;
+        }
+        
+        if (this.currencyCode == null) {
+            if (tx.getCurrencyCode() != null) {
+                return false;
+            }
+        } else if (!this.currencyCode.equals(tx.getCurrencyCode())) {
+            return false;
+        }
+        
+        if (this.orderId == null) {
+            if (tx.getOrderId() != null) {
+                return false;
+            }
+        } else if (!this.orderId.equals(tx.getOrderId())) {
+            return false;
+        }
+        
+        if (this.paymentMethod == null) {
+            if (tx.getPaymentMethod() != null) {
+                return false;
+            }
+        } else if (!this.paymentMethod.equals(tx.getPaymentMethod())) {
+            return false;
+        }
+        
+        if (this.sellerUserId == null) {
+            if (tx.getSellerUserId() != null) {
+                return false;
+            }
+        } else if (!this.sellerUserId.equals(tx.getSellerUserId())) {
+            return false;
+        }
+        
+        if (this.sessionId == null) {
+            if (tx.getSessionId() != null) {
+                return false;
+            }
+        } else if (!this.sessionId.equals(tx.getSessionId())) {
+            return false;
+        }
+        
+        if (this.shippingAddress == null) {
+            if (tx.getShippingAddress() != null) {
+                return false;
+            }
+        } else if (!this.shippingAddress.equals(tx.getShippingAddress())) {
+            return false;
+        }
+        
+        if (this.transactionId == null) {
+            if (tx.getTransactionId() != null) {
+                return false;
+            }
+        } else if (!this.transactionId.equals(tx.getTransactionId())) {
+            return false;
+        }
+        
+        if (this.transactionStatus == null) {
+            if (tx.getTransactionStatus() != null) {
+                return false;
+            }
+        } else if (!this.transactionStatus.equals(tx.getTransactionStatus())) {
+            return false;
+        }
+        
+        if (this.transactionType == null) {
+            if (tx.getTransactionType() != null) {
+                return false;
+            }
+        } else if (!this.transactionType.equals(tx.getTransactionType())) {
+            return false;
+        }
+        
+        if (this.userEmail == null) {
+            if (tx.getUserEmail() != null) {
+                return false;
+            }
+        } else if (!this.userEmail.equals(tx.getUserEmail())) {
+            return false;
+        }
+        
+        if (this.userId == null) {
+            if (tx.getUserId() != null) {
+                return false;
+            }
+        } else if (!this.userId.equals(tx.getUserId())) {
+            return false;
+        }
+        
+        return true;
+    }
 
 }

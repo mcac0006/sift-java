@@ -107,64 +107,80 @@ public class SiftScienceScore {
 	public final void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((errorMessage == null) ? 0 : errorMessage.hashCode());
+        result = prime * result
+                + ((latestLabel == null) ? 0 : latestLabel.hashCode());
+        result = prime * result + Arrays.hashCode(reasons);
+        result = prime * result + ((score == null) ? 0 : score.hashCode());
+        result = prime * result + ((status == null) ? 0 : status.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == null || !(obj instanceof SiftScienceScore)) {
+            return false;
+        }
+        
+        final SiftScienceScore e = (SiftScienceScore)obj;
+        
+        if (this.errorMessage == null) {
+            if (e.getErrorMessage() != null) {
+                return false;
+            }
+        } else if (!this.errorMessage.equals(e.getErrorMessage())) {
+            return false;
+        }
+        
+        if (this.latestLabel == null) {
+            if (e.getLatestLabel() != null) {
+                return false;
+            }
+        } else if (!this.latestLabel.equals(e.getLatestLabel())) {
+            return false;
+        }
+
+        if (this.reasons == null) {
+            if (e.getReasons() != null) {
+                return false;
+            }
+        } else if (!Arrays.equals(this.reasons, e.getReasons())) {
+            return false;
+        }
+        
+        if (this.score == null) {
+            if (e.getScore() != null) {
+                return false;
+            }
+        } else if (!this.score.equals(e.getScore())) {
+            return false;
+        }
+        
+        if (this.status == null) {
+            if (e.getStatus() != null) {
+                return false;
+            }
+        } else if (!this.status.equals(e.getStatus())) {
+            return false;
+        }
+        
+        if (this.userId == null) {
+            if (e.getUserId() != null) {
+                return false;
+            }
+        } else if (!this.userId.equals(e.getUserId())) {
+            return false;
+        }
+        
+        return true;
+    }
 	
-	@Override
-	public boolean equals(Object obj) {
-
-		if (obj == null || !(obj instanceof SiftScienceScore)) {
-			return false;
-		}
-		
-		final SiftScienceScore e = (SiftScienceScore)obj;
-		
-		if (this.errorMessage == null) {
-			if (e.getErrorMessage() != null) {
-				return false;
-			}
-		} else if (!this.errorMessage.equals(e.getErrorMessage())) {
-			return false;
-		}
-		
-		if (this.latestLabel == null) {
-			if (e.getLatestLabel() != null) {
-				return false;
-			}
-		} else if (!this.latestLabel.equals(e.getLatestLabel())) {
-			return false;
-		}
-
-		if (this.reasons == null) {
-			if (e.getReasons() != null) {
-				return false;
-			}
-		} else if (!Arrays.equals(this.reasons, e.getReasons())) {
-			return false;
-		}
-		
-		if (this.score == null) {
-			if (e.getScore() != null) {
-				return false;
-			}
-		} else if (!this.score.equals(e.getScore())) {
-			return false;
-		}
-		
-		if (this.status == null) {
-			if (e.getStatus() != null) {
-				return false;
-			}
-		} else if (!this.status.equals(e.getStatus())) {
-			return false;
-		}
-		
-		if (this.userId == null) {
-			if (e.getUserId() != null) {
-				return false;
-			}
-		} else if (!this.userId.equals(e.getUserId())) {
-			return false;
-		}
-		
-		return true;
-	}
 }

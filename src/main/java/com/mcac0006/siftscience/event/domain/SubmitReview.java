@@ -130,75 +130,95 @@ public class SubmitReview extends Event {
 		return this;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		
-		if (!super.equals(obj)) {
-			return false;
-		}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((content == null) ? 0 : content.hashCode());
+        result = prime * result + ((itemId == null) ? 0 : itemId.hashCode());
+        result = prime * result
+                + ((reviewTitle == null) ? 0 : reviewTitle.hashCode());
+        result = prime * result
+                + ((reviewedUserId == null) ? 0 : reviewedUserId.hashCode());
+        result = prime * result
+                + ((sessionId == null) ? 0 : sessionId.hashCode());
+        result = prime
+                * result
+                + ((submissionStatus == null) ? 0 : submissionStatus.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        return result;
+    }
 
-		if (!(obj instanceof SubmitReview)) {
-			return false;
-		}
-		
-		final SubmitReview sr = (SubmitReview)obj;
-		
-		if (this.sessionId == null) {
-			if (sr.getSessionId() != null) {
-				return false;
-			}
-		} else if (!this.sessionId.equals(sr.getSessionId())) {
-			return false;
-		}
-		
-		if (this.userId == null) {
-			if (sr.getUserId() != null) {
-				return false;
-			}
-		} else if (!this.userId.equals(sr.getUserId())) {
-			return false;
-		}
-		
-		if (this.content == null) {
-			if (sr.getContent() != null) {
-				return false;
-			}
-		} else if (!this.content.equals(sr.getContent())) {
-			return false;
-		}
-		
-		if (this.itemId == null) {
-			if (sr.getItemId() != null) {
-				return false;
-			}
-		} else if (!this.itemId.equals(sr.getItemId())) {
-			return false;
-		}
-		
-		if (this.reviewedUserId == null) {
-			if (sr.getReviewedUserId() != null) {
-				return false;
-			}
-		} else if (!this.reviewedUserId.equals(sr.getReviewedUserId())) {
-			return false;
-		}
-		
-		if (this.reviewTitle == null) {
-			if (sr.getReviewTitle() != null) {
-				return false;
-			}
-		} else if (!this.reviewTitle.equals(sr.getReviewTitle())) {
-			return false;
-		}
-		
-		if (this.submissionStatus == null) {
-			if (sr.getSubmissionStatus() != null) {
-				return false;
-			}
-		} else if (!this.submissionStatus.equals(sr.getSubmissionStatus())) {
-			return false;
-		}
-		
-		return true;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        if (obj == null || !(obj instanceof SubmitReview)) {
+            return false;
+        }
+        
+        final SubmitReview sr = (SubmitReview)obj;
+        
+        if (this.sessionId == null) {
+            if (sr.getSessionId() != null) {
+                return false;
+            }
+        } else if (!this.sessionId.equals(sr.getSessionId())) {
+            return false;
+        }
+        
+        if (this.userId == null) {
+            if (sr.getUserId() != null) {
+                return false;
+            }
+        } else if (!this.userId.equals(sr.getUserId())) {
+            return false;
+        }
+        
+        if (this.content == null) {
+            if (sr.getContent() != null) {
+                return false;
+            }
+        } else if (!this.content.equals(sr.getContent())) {
+            return false;
+        }
+        
+        if (this.itemId == null) {
+            if (sr.getItemId() != null) {
+                return false;
+            }
+        } else if (!this.itemId.equals(sr.getItemId())) {
+            return false;
+        }
+        
+        if (this.reviewedUserId == null) {
+            if (sr.getReviewedUserId() != null) {
+                return false;
+            }
+        } else if (!this.reviewedUserId.equals(sr.getReviewedUserId())) {
+            return false;
+        }
+        
+        if (this.reviewTitle == null) {
+            if (sr.getReviewTitle() != null) {
+                return false;
+            }
+        } else if (!this.reviewTitle.equals(sr.getReviewTitle())) {
+            return false;
+        }
+        
+        if (this.submissionStatus == null) {
+            if (sr.getSubmissionStatus() != null) {
+                return false;
+            }
+        } else if (!this.submissionStatus.equals(sr.getSubmissionStatus())) {
+            return false;
+        }
+        
+        return true;
+    }
+
 }

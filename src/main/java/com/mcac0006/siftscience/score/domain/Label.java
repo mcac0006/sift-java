@@ -96,47 +96,60 @@ public class Label {
 		this.time = time;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((description == null) ? 0 : description.hashCode());
+        result = prime * result + ((isBad == null) ? 0 : isBad.hashCode());
+        result = prime * result + Arrays.hashCode(reasons);
+        result = prime * result + ((time == null) ? 0 : time.hashCode());
+        return result;
+    }
 
-		if (obj == null || !(obj instanceof Label)) {
-			return false;
-		}
-		
-		final Label l = (Label)obj;
-		
-		if (this.isBad == null) {
-			if (l.getIsBad() != null) {
-				return false;
-			}
-		} else if (!this.isBad.equals(l.getIsBad())) {
-			return false;
-		}
-		
-		if (this.description == null) {
-			if (l.getDescription() != null) {
-				return false;
-			}
-		} else if (!this.description.equals(l.getDescription())) {
-			return false;
-		}
-		
-		if (this.reasons == null) {
-			if (l.getReasons() != null) {
-				return false;
-			}
-		} else if (!Arrays.equals(this.reasons, l.getReasons())) {
-			return false;
-		}
-		
-		if (this.time == null) {
-			if (l.getTime() != null) {
-				return false;
-			}
-		} else if (!this.time.equals(l.getTime())) {
-			return false;
-		}
-		
-		return true;
-	}
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == null || !(obj instanceof Label)) {
+            return false;
+        }
+        
+        final Label l = (Label)obj;
+        
+        if (this.isBad == null) {
+            if (l.getIsBad() != null) {
+                return false;
+            }
+        } else if (!this.isBad.equals(l.getIsBad())) {
+            return false;
+        }
+        
+        if (this.description == null) {
+            if (l.getDescription() != null) {
+                return false;
+            }
+        } else if (!this.description.equals(l.getDescription())) {
+            return false;
+        }
+        
+        if (this.reasons == null) {
+            if (l.getReasons() != null) {
+                return false;
+            }
+        } else if (!Arrays.equals(this.reasons, l.getReasons())) {
+            return false;
+        }
+        
+        if (this.time == null) {
+            if (l.getTime() != null) {
+                return false;
+            }
+        } else if (!this.time.equals(l.getTime())) {
+            return false;
+        }
+        
+        return true;
+    }
+
 }

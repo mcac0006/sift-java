@@ -125,80 +125,98 @@ public class Address {
 		this.phone = phone;
 		return this;
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
 
-		if (obj == null || !(obj instanceof Address)) {
-			return false;
-		}
-		
-		final Address address = (Address)obj;
-		
-		if (this.addressLine1 == null) {
-			if (address.getAddressLine1() != null) {
-				return false;
-			}
-		} else if (!this.addressLine1.equals(address.getAddressLine1())) {
-			return false;
-		}
-		
-		if (this.addressLine2 == null) {
-			if (address.getAddressLine2() != null) {
-				return false;
-			}
-		} else if (!this.addressLine2.equals(address.getAddressLine2())) {
-			return false;
-		}
-		
-		if (this.city == null) {
-			if (address.getCity() != null) {
-				return false;
-			}
-		} else if (!this.city.equals(address.getCity())) {
-			return false;
-		}
-		
-		if (this.country == null) {
-			if (address.getCountry() != null) {
-				return false;
-			}
-		} else if (!this.country.equals(address.getCountry())) {
-			return false;
-		}
-		
-		if (this.name == null) {
-			if (address.getName() != null) {
-				return false;
-			}
-		} else if (!this.name.equals(address.getName())) {
-			return false;
-		}
-		
-		if (this.phone == null) {
-			if (address.getPhone() != null) {
-				return false;
-			}
-		} else if (!this.phone.equals(address.getPhone())) {
-			return false;
-		}
-		
-		if (this.region == null) {
-			if (address.getRegion() != null) {
-				return false;
-			}
-		} else if (!this.region.equals(address.getRegion())) {
-			return false;
-		}
-		
-		if (this.zipCode == null) {
-			if (address.getZipCode() != null) {
-				return false;
-			}
-		} else if (!this.zipCode.equals(address.getZipCode())) {
-			return false;
-		}
-		
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((addressLine1 == null) ? 0 : addressLine1.hashCode());
+        result = prime * result
+                + ((addressLine2 == null) ? 0 : addressLine2.hashCode());
+        result = prime * result + ((city == null) ? 0 : city.hashCode());
+        result = prime * result + ((country == null) ? 0 : country.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+        result = prime * result + ((region == null) ? 0 : region.hashCode());
+        result = prime * result + ((zipCode == null) ? 0 : zipCode.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == null || !(obj instanceof Address)) {
+            return false;
+        }
+        
+        final Address address = (Address)obj;
+        
+        if (this.addressLine1 == null) {
+            if (address.getAddressLine1() != null) {
+                return false;
+            }
+        } else if (!this.addressLine1.equals(address.getAddressLine1())) {
+            return false;
+        }
+        
+        if (this.addressLine2 == null) {
+            if (address.getAddressLine2() != null) {
+                return false;
+            }
+        } else if (!this.addressLine2.equals(address.getAddressLine2())) {
+            return false;
+        }
+        
+        if (this.city == null) {
+            if (address.getCity() != null) {
+                return false;
+            }
+        } else if (!this.city.equals(address.getCity())) {
+            return false;
+        }
+        
+        if (this.country == null) {
+            if (address.getCountry() != null) {
+                return false;
+            }
+        } else if (!this.country.equals(address.getCountry())) {
+            return false;
+        }
+        
+        if (this.name == null) {
+            if (address.getName() != null) {
+                return false;
+            }
+        } else if (!this.name.equals(address.getName())) {
+            return false;
+        }
+        
+        if (this.phone == null) {
+            if (address.getPhone() != null) {
+                return false;
+            }
+        } else if (!this.phone.equals(address.getPhone())) {
+            return false;
+        }
+        
+        if (this.region == null) {
+            if (address.getRegion() != null) {
+                return false;
+            }
+        } else if (!this.region.equals(address.getRegion())) {
+            return false;
+        }
+        
+        if (this.zipCode == null) {
+            if (address.getZipCode() != null) {
+                return false;
+            }
+        } else if (!this.zipCode.equals(address.getZipCode())) {
+            return false;
+        }
+        
+        return true;
+    }
+	
 }

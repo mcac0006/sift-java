@@ -78,43 +78,56 @@ public class AddItemToCart extends Event {
 		return this;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		
-		if (!super.equals(obj)) {
-			return false;
-		}
 
-		if (!(obj instanceof AddItemToCart)) {
-			return false;
-		}
-		
-		final AddItemToCart aitc = (AddItemToCart)obj;
-		
-		if (this.item == null) {
-			if (aitc.getItem() != null) {
-				return false;
-			}
-		} else if (!this.item.equals(aitc.getItem())) {
-			return false;
-		}
-		
-		if (this.sessionId == null) {
-			if (aitc.getSessionId() != null) {
-				return false;
-			}
-		} else if (!this.sessionId.equals(aitc.getSessionId())) {
-			return false;
-		}
-		
-		if (this.userId == null) {
-			if (aitc.getUserId() != null) {
-				return false;
-			}
-		} else if (!this.userId.equals(aitc.getUserId())) {
-			return false;
-		}
-		
-		return true;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((item == null) ? 0 : item.hashCode());
+        result = prime * result
+                + ((sessionId == null) ? 0 : sessionId.hashCode());
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        
+        if (!super.equals(obj)) {
+            return false;
+        }
+
+        if (obj == null || !(obj instanceof AddItemToCart)) {
+            return false;
+        }
+        
+        final AddItemToCart aitc = (AddItemToCart)obj;
+        
+        if (this.item == null) {
+            if (aitc.getItem() != null) {
+                return false;
+            }
+        } else if (!this.item.equals(aitc.getItem())) {
+            return false;
+        }
+        
+        if (this.sessionId == null) {
+            if (aitc.getSessionId() != null) {
+                return false;
+            }
+        } else if (!this.sessionId.equals(aitc.getSessionId())) {
+            return false;
+        }
+        
+        if (this.userId == null) {
+            if (aitc.getUserId() != null) {
+                return false;
+            }
+        } else if (!this.userId.equals(aitc.getUserId())) {
+            return false;
+        }
+        
+        return true;
+    }
+	
 }

@@ -15,7 +15,7 @@ public class SiftScienceResponse {
 	 * This contains the error code of the request.
 	 * 
 	 *  Zero (0) means all OK, any non-zero status is an error. Refer to 
-	 *  {@link #errorMessage} for an informal description of the error.
+	 *  {@link #error_message} for an informal description of the error.
 	 */
 	private Integer status;
 	
@@ -23,7 +23,7 @@ public class SiftScienceResponse {
 	 * This goes hand-in-hand with {@link #status}. It gives an informal 
 	 * description justifying the error code found in {@link #status}.
 	 */
-	private String errorMessage;
+	private String error_message;
 	
 	/**
 	 * When Sift Science received the original request (in seconds).
@@ -45,12 +45,12 @@ public class SiftScienceResponse {
 		this.status = status;
 	}
 
-	public String getErrorMessage() {
-		return errorMessage;
+	public String getError_message() {
+		return error_message;
 	}
 
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
+	public void setError_message(String error_message) {
+		this.error_message = error_message;
 	}
 
 	public Integer getTime() {

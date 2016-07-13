@@ -49,11 +49,25 @@ public class SiftScienceHelper {
 	 * @return the Sift Science response which denotes whether the request has been processed successfully or not.
 	 */
 	public static SiftScienceResponse send(final Event event) {
+		return send(event, false);
+        }
+
+	/**
+	 * Sends an event ($transaction, $create_account, etc ...) to Sift Science.
+	 *
+	 * @param event - the content regarding the user (or session) in question.
+	 * @param returnAction - whether or not Sift should return a score and actions for the event
+	 * @return the Sift Science response which denotes whether the request has been processed successfully or not.
+	 */
+	public static SiftScienceResponse send(final Event event, boolean returnAction) {
 		
 		try {
 			
 			final Client client = ClientBuilder.newClient();
-			final WebTarget target = client.target("https://api.siftscience.com/v203/events");
+			WebTarget target = client.target("https://api.siftscience.com/v203/events");
+                        if (returnAction) {
+				target = target.queryParam("return_action", "true");
+                        }
 			final Builder request = target.request(MediaType.APPLICATION_JSON_TYPE);
 			final Response post = request.post(Entity.entity(serialize(event), MediaType.APPLICATION_JSON_TYPE));
 			

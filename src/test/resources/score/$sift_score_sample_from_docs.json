@@ -1,0 +1,45 @@
+{
+  "status": 0,
+  "error_message": "OK",
+  "score": 0.5124965408964449,
+  "reasons": [{
+    "name": "UsersPerDevice",
+    "value": "4",
+    "details": {
+      "users": "a, b, c, d"
+    }
+  }],
+  "user_id": "al_capone",
+  "latest_label": {
+    "is_bad": true,
+    "time": 1350201660,
+    "reasons": [
+      "$chargeback",
+      "$spam"
+    ],
+    "description": "known fraudster"
+  },
+  "actions": [{
+    "id" : "975b19da08c979dd90311b4e23f88d407ffffeb0d1878d83",
+    "action": {
+      "id": "5586447de4b0b24f2b992b87"
+    },
+    "entity": {
+      "id": "al_capone"
+    },
+    "time": 1436982891721,
+    "triggers": [{
+      "type": "formula",
+      "source": "score_api",
+      "trigger": {
+        "id": "55ce74d5e4b08533f12eac97"
+      }
+    }, {
+      "type": "formula",
+      "source": "score_api",
+      "trigger": {
+        "id": "55ce74d5e4b08533f12ead21"
+      }
+    }]
+  }]
+}

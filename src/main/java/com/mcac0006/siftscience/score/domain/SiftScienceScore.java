@@ -5,6 +5,7 @@ package com.mcac0006.siftscience.score.domain;
 
 import java.util.Arrays;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 
@@ -21,8 +22,8 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * @author <a href="mailto:matthew.cachia@gmail.com">Matthew Cachia</a>
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SiftScienceScore {
-
 	
 	/**
 	 * The user ID in question.

@@ -205,7 +205,42 @@ public class SiftScienceScoreTest {
 		
 		Assert.assertEquals(scoreToAssertAgainst, scoreFromSS);
 	}
-	
+
+	@Test
+	public void testScoreResponseFromDocs() throws IOException {
+
+		// let's load up the score sample file
+		// from https://siftscience.com/developers/docs/curl/automation-apis/score-api
+		final InputStream inputStream = new FileInputStream("target/test-classes/score/$sift_score_sample_from_docs.json");
+		final SiftScienceScore scoreFromSS = SiftScienceHelper.deserializeScore(IOUtils.toString(inputStream));
+
+		final SiftScienceScore scoreToAssertAgainst = new SiftScienceScore();
+		scoreToAssertAgainst.setStatus((short)0);
+		scoreToAssertAgainst.setErrorMessage("OK");
+		scoreToAssertAgainst.setScore(0.5124965408964449f);
+		scoreToAssertAgainst.setUserId("al_capone");
+
+		Label label = new Label();
+		label.setIsBad(true);
+		com.mcac0006.siftscience.types.Reason[] reasons = new com.mcac0006.siftscience.types.Reason[2];
+		reasons[0] = com.mcac0006.siftscience.types.Reason.CHARGEBACK;
+		reasons[1] = com.mcac0006.siftscience.types.Reason.SPAM;
+		final Calendar cal = Calendar.getInstance(); cal.setTimeInMillis(1350201660000L);
+		label.setTime(cal);
+		label.setReasons(reasons);
+                label.setDescription("known fraudster");
+		scoreToAssertAgainst.setLatestLabel(label);
+
+		final Reason reason1 = new Reason();
+		reason1.setName("UsersPerDevice");
+		reason1.setValue("4");
+		reason1.addDetails("users", "a, b, c, d");
+
+		scoreToAssertAgainst.setReasons(new Reason[]{ reason1 });
+
+                Assert.assertEquals(scoreToAssertAgainst, scoreFromSS);
+	}
+
 	@Test
 	public void testUnknownUser() throws IOException {
 		

@@ -1,0 +1,45 @@
+{
+  "status": 0,
+  "error_message": "OK",
+  "request": "body_of_the_request_you_sent",
+  "time": 1454517138,
+  "score_response": {
+    "status": 0,
+    "error_message": "OK",
+    "user_id": "sample_user2",
+    "latest_label": {
+      "reasons": ["$spam"],
+      "is_bad": false,
+      "time": 1454517070
+    },
+    "score": 0.39944676614045643,
+    "reasons": [
+      {
+        "name": "Number of users with the same billing address",
+        "value": "3",
+        "details": {
+          "users": "sample_user3,sample_user4"
+        }
+      }
+    ],
+    "actions": [
+      {
+        "action": {
+          "id": "take_action"
+        },
+        "triggers": [
+          {
+            "source": "synchronous_action",
+            "trigger": {
+              "id": "568c65bfe4b04102ee5aa080"
+            },
+            "type": "formula"
+          }],
+        "time": 1454517138887,
+        "id": "cd089ea60de36f3ac0dd47572fc4a00a7ffffead5805ca38:take_action",
+        "entity": {
+          "id": "sample_user2"
+        }
+      }]
+  }
+}

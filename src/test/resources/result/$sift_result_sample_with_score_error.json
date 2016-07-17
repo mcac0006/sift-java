@@ -1,0 +1,10 @@
+{
+  "status": 0,
+  "error_message": "OK",
+  "request": "...request_body...",
+  "time": 1454519952,
+  "score_response": {
+    "status": -3,
+    "error_message": "Server-side timeout processing request. Please try again later."
+  }
+}
